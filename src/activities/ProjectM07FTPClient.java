@@ -20,7 +20,8 @@ public class ProjectM07FTPClient extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
-	
+	private JMenu menuHelp;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,24 +41,26 @@ public class ProjectM07FTPClient extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setPreferredSize(new Dimension(700, 500));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-	
+
+		menuFile();
 		menuEdit();
-		
+
 		menuView();
 
 		menuServer();
 		menuTransfer();
+		menuHelp();
 		pack();
 
 	}
 
-private void menuTransfer() {
+	private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
 		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
@@ -94,12 +97,12 @@ private void menuTransfer() {
 
 		JMenuItem menuItemEdit = new JMenuItem("Clear private data...");
 		menuEdit.add(menuItemEdit);
-		
+
 		JSeparator separator = new JSeparator();
 		menuEdit.add(separator);
-		
+
 		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
-		menuEdit.add(menuItemSettigs);		
+		menuEdit.add(menuItemSettigs);
 
 	}
 
@@ -109,25 +112,25 @@ private void menuTransfer() {
 
 		JMenuItem menuItemCancelCurrentOperation = new JMenuItem("Cancel current operation");
 		menuServer.add(menuItemCancelCurrentOperation);
-		
+
 		JSeparator separator = new JSeparator();
 		menuServer.add(separator);
-		
+
 		JMenuItem menuItemReconnect = new JMenuItem("Reconnect");
-		menuServer.add(menuItemReconnect);		
+		menuServer.add(menuItemReconnect);
 		JMenuItem menuItemDisconnect = new JMenuItem("Disconnect");
-		menuServer.add(menuItemDisconnect);			
+		menuServer.add(menuItemDisconnect);
 		JSeparator separator2 = new JSeparator();
 		menuServer.add(separator2);
 		JMenuItem menuItemForceShowingHiddenFiles = new JMenuItem("Force showing hidden files");
-		menuServer.add(menuItemForceShowingHiddenFiles);	
-		
+		menuServer.add(menuItemForceShowingHiddenFiles);
+
 	}
 
 	public void menuView() {
 		JMenu menuView = new JMenu("View");
 		menuBar.add(menuView);
-	
+
 		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
 		menuItemRefresh.setMnemonic(KeyEvent.VK_F1);
 		menuView.add(menuItemRefresh);
@@ -165,6 +168,34 @@ private void menuTransfer() {
 		JCheckBoxMenuItem menuItemTransferQueue = new JCheckBoxMenuItem("Transfer queue");
 		menuItemTransferQueue.setSelected(true);
 		menuView.add(menuItemTransferQueue);
+	}
+
+	private void menuHelp() {
+		menuHelp = new JMenu("Help");
+		menuBar.add(menuHelp);
+		
+		JMenuItem menuItemCheckupdates = new JMenuItem("Check for updates");
+		menuItemCheckupdates.setMnemonic('u');
+		menuHelp.add(menuItemCheckupdates);
+
+		JSeparator separator_2 = new JSeparator();
+		menuHelp.add(separator_2);
+		
+		JMenuItem menuItemFaqs = new JMenuItem("Faqs");
+		menuItemFaqs.setMnemonic('F');
+		menuHelp.add(menuItemFaqs);
+		
+		JMenuItem menuItemReportBug = new JMenuItem("Report a bug");
+		menuItemReportBug.setMnemonic('R');
+		menuItemReportBug.setSelected(true);
+		menuHelp.add(menuItemReportBug);
+
+		JSeparator separator_3 = new JSeparator();
+		menuHelp.add(separator_3);
+		
+		JMenuItem menuItemAbout = new JMenuItem("About");
+		menuItemAbout.setMnemonic('A');
+		menuHelp.add(menuItemAbout);
 	}
 
 }
