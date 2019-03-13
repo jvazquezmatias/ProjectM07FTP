@@ -20,7 +20,6 @@ public class ProjectM07FTPClient extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
-	private JMenu menuHelp;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,7 +54,6 @@ public class ProjectM07FTPClient extends JFrame {
 
 		menuServer();
 		menuTransfer();
-		menuHelp();
 		pack();
 
 	}
@@ -168,34 +166,6 @@ public class ProjectM07FTPClient extends JFrame {
 		JCheckBoxMenuItem menuItemTransferQueue = new JCheckBoxMenuItem("Transfer queue");
 		menuItemTransferQueue.setSelected(true);
 		menuView.add(menuItemTransferQueue);
-	}
-
-	private void menuHelp() {
-		menuHelp = new JMenu("Help");
-		menuBar.add(menuHelp);
-		
-		JMenuItem menuItemCheckupdates = new JMenuItem("Check for updates");
-		menuItemCheckupdates.setMnemonic('u');
-		menuHelp.add(menuItemCheckupdates);
-
-		JSeparator separator_2 = new JSeparator();
-		menuHelp.add(separator_2);
-		
-		JMenuItem menuItemFaqs = new JMenuItem("Faqs");
-		menuItemFaqs.setMnemonic('F');
-		menuHelp.add(menuItemFaqs);
-		
-		JMenuItem menuItemReportBug = new JMenuItem("Report a bug");
-		menuItemReportBug.setMnemonic('R');
-		menuItemReportBug.setSelected(true);
-		menuHelp.add(menuItemReportBug);
-
-		JSeparator separator_3 = new JSeparator();
-		menuHelp.add(separator_3);
-		
-		JMenuItem menuItemAbout = new JMenuItem("About");
-		menuItemAbout.setMnemonic('A');
-		menuHelp.add(menuItemAbout);
 	}
 
 }
