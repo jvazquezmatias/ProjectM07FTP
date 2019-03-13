@@ -47,93 +47,93 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 	
-		menuEdicion();
+		menuEdit();
 		
-		menuVer();
+		menuView();
 
-		menuServidor();
+		menuServer();
 
 		pack();
 
 	}
 	
-	private void menuEdicion() {
-		JMenu menuVer = new JMenu("Edición");
-		menuBar.add(menuVer);
+	private void menuEdit() {
+		JMenu menuEdit = new JMenu("Edit");
+		menuBar.add(menuEdit);
 
-		JMenuItem menuItemEdicion = new JMenuItem("Limpiar información privada...");
-		menuVer.add(menuItemEdicion);
+		JMenuItem menuItemEdit = new JMenuItem("Clear private data...");
+		menuEdit.add(menuItemEdit);
 		
 		JSeparator separator = new JSeparator();
-		menuVer.add(separator);
+		menuEdit.add(separator);
 		
-		JMenuItem menuItemOpciones = new JMenuItem("Opciones...");
-		menuVer.add(menuItemOpciones);		
+		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
+		menuEdit.add(menuItemSettigs);		
 
 	}
 
-	private void menuServidor() {
-		JMenu menuVer = new JMenu("Servidor");
-		menuBar.add(menuVer);
+	private void menuServer() {
+		JMenu menuServer = new JMenu("Server");
+		menuBar.add(menuServer);
 
-		JMenuItem menuItemOperacionActual = new JMenuItem("Cancelar operacion actual");
-		menuVer.add(menuItemOperacionActual);
+		JMenuItem menuItemCancelCurrentOperation = new JMenuItem("Cancel current operation");
+		menuServer.add(menuItemCancelCurrentOperation);
 		
 		JSeparator separator = new JSeparator();
-		menuVer.add(separator);
+		menuServer.add(separator);
 		
-		JMenuItem menuItemReconectar = new JMenuItem("Reconectar");
-		menuVer.add(menuItemReconectar);		
-		JMenuItem menuItemDesconectar = new JMenuItem("Desconectar");
-		menuVer.add(menuItemDesconectar);			
+		JMenuItem menuItemReconnect = new JMenuItem("Reconnect");
+		menuServer.add(menuItemReconnect);		
+		JMenuItem menuItemDisconnect = new JMenuItem("Disconnect");
+		menuServer.add(menuItemDisconnect);			
 		JSeparator separator2 = new JSeparator();
-		menuVer.add(separator2);
-		JMenuItem menuItemMostrarArchivosOcultos = new JMenuItem("Mostrar archivos ocultos");
-		menuVer.add(menuItemMostrarArchivosOcultos);	
+		menuServer.add(separator2);
+		JMenuItem menuItemForceShowingHiddenFiles = new JMenuItem("Force showing hidden files");
+		menuServer.add(menuItemForceShowingHiddenFiles);	
 		
 	}
 
-	public void menuVer() {
-		JMenu menuVer = new JMenu("Ver");
-		menuBar.add(menuVer);
+	public void menuView() {
+		JMenu menuView = new JMenu("View");
+		menuBar.add(menuView);
 	
-		JMenuItem menuItemVerActualizar = new JMenuItem("Actualizar");
-		menuItemVerActualizar.setMnemonic(KeyEvent.VK_F1);
-		menuVer.add(menuItemVerActualizar);
+		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
+		menuItemRefresh.setMnemonic(KeyEvent.VK_F1);
+		menuView.add(menuItemRefresh);
 
 		JSeparator separator = new JSeparator();
-		menuVer.add(separator);
+		menuView.add(separator);
 
-		JCheckBoxMenuItem checkBarraYEstados = new JCheckBoxMenuItem("Barra y estado de lista de archivos");
-		checkBarraYEstados.setSelected(true);
-		menuVer.add(checkBarraYEstados);
+		JCheckBoxMenuItem menuItemFilelistStatusBars = new JCheckBoxMenuItem("Filelist status bars");
+		menuItemFilelistStatusBars.setSelected(true);
+		menuView.add(menuItemFilelistStatusBars);
 
 		JSeparator separator_1 = new JSeparator();
-		menuVer.add(separator_1);
+		menuView.add(separator_1);
 
-		JCheckBoxMenuItem checkBarraHerramientas = new JCheckBoxMenuItem("Barra de herramientas");
-		checkBarraHerramientas.setSelected(true);
-		menuVer.add(checkBarraHerramientas);
+		JCheckBoxMenuItem menuItemToolbar = new JCheckBoxMenuItem("Toolbar");
+		menuItemToolbar.setSelected(true);
+		menuView.add(menuItemToolbar);
 
-		JCheckBoxMenuItem checkBarraConexionRapida = new JCheckBoxMenuItem("Barra de conexión rápida");
-		checkBarraConexionRapida.setSelected(true);
-		menuVer.add(checkBarraConexionRapida);
+		JCheckBoxMenuItem menuItemQuickconnectBar = new JCheckBoxMenuItem("Quickconnect bar");
+		menuItemQuickconnectBar.setSelected(true);
+		menuView.add(menuItemQuickconnectBar);
 
-		JCheckBoxMenuItem checkRegistroMensajes = new JCheckBoxMenuItem("Registro de mensajes");
-		checkRegistroMensajes.setSelected(true);
-		menuVer.add(checkRegistroMensajes);
+		JCheckBoxMenuItem menuItemMessageLog = new JCheckBoxMenuItem("Message log");
+		menuItemMessageLog.setSelected(true);
+		menuView.add(menuItemMessageLog);
 
-		JCheckBoxMenuItem checkArbolLocal = new JCheckBoxMenuItem("Árbol de directorio local");
-		checkArbolLocal.setSelected(true);
-		menuVer.add(checkArbolLocal);
+		JCheckBoxMenuItem menuItemLocalDirectoryTree = new JCheckBoxMenuItem("Local directory tree");
+		menuItemLocalDirectoryTree.setSelected(true);
+		menuView.add(menuItemLocalDirectoryTree);
 
-		JCheckBoxMenuItem checkArbolRemoto = new JCheckBoxMenuItem("Árbol de directorio remoto");
-		checkArbolRemoto.setSelected(true);
-		menuVer.add(checkArbolRemoto);
+		JCheckBoxMenuItem menuItemRemoteDirectoryTree = new JCheckBoxMenuItem("Remote directory tree");
+		menuItemRemoteDirectoryTree.setSelected(true);
+		menuView.add(menuItemRemoteDirectoryTree);
 
-		JCheckBoxMenuItem checkColaTransferencia = new JCheckBoxMenuItem("Cola de transferencia");
-		checkColaTransferencia.setSelected(true);
-		menuVer.add(checkColaTransferencia);
+		JCheckBoxMenuItem menuItemTransferQueue = new JCheckBoxMenuItem("Transfer queue");
+		menuItemTransferQueue.setSelected(true);
+		menuView.add(menuItemTransferQueue);
 	}
 
 }
