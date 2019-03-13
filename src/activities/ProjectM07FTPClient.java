@@ -49,13 +49,53 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar = new JMenuBar();
 		contentPane.add(menuBar);
 		
-		menuVer();
 		
+		verEdicion();
+		
+		menuVer();
+
+		verServidor();
 
 		pack();
 
 	}
 	
+	private void verEdicion() {
+		JMenu menuVer = new JMenu("Edición");
+		menuBar.add(menuVer);
+
+		JMenuItem menuItemEdicion = new JMenuItem("Limpiar información privada...");
+		menuVer.add(menuItemEdicion);
+		
+		JSeparator separator = new JSeparator();
+		menuVer.add(separator);
+		
+		JMenuItem menuItemOpciones = new JMenuItem("Opciones...");
+		menuVer.add(menuItemOpciones);		
+
+	}
+
+	private void verServidor() {
+		JMenu menuVer = new JMenu("Servidor");
+		menuBar.add(menuVer);
+
+		JMenuItem menuItemOperacionActual = new JMenuItem("Cancelar operacion actual");
+		menuVer.add(menuItemOperacionActual);
+		
+		JSeparator separator = new JSeparator();
+		menuVer.add(separator);
+		
+		JMenuItem menuItemReconectar = new JMenuItem("Reconectar");
+		menuVer.add(menuItemReconectar);		
+		JMenuItem menuItemDesconectar = new JMenuItem("Desconectar");
+		menuVer.add(menuItemDesconectar);			
+		JSeparator separator2 = new JSeparator();
+		menuVer.add(separator2);
+		JMenuItem menuItemMostrarArchivosOcultos = new JMenuItem("Mostrar archivos ocultos");
+		menuVer.add(menuItemMostrarArchivosOcultos);	
+		
+	}
+
 	public void menuVer() {
 		JMenu menuVer = new JMenu("Ver");
 		menuBar.add(menuVer);
