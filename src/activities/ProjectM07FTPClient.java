@@ -22,7 +22,8 @@ public class ProjectM07FTPClient extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
-
+	private JMenuBar menuBar;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,9 +46,17 @@ public class ProjectM07FTPClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		contentPane.add(menuBar);
+		
+		menuVer();
+		
 
+		pack();
+
+	}
+	
+	public void menuVer() {
 		JMenu menuVer = new JMenu("Ver");
 		menuBar.add(menuVer);
 
@@ -87,9 +96,6 @@ public class ProjectM07FTPClient extends JFrame {
 		JCheckBoxMenuItem checkColaTransferencia = new JCheckBoxMenuItem("Cola de transferencia");
 		checkColaTransferencia.setSelected(true);
 		menuVer.add(checkColaTransferencia);
-
-		pack();
-
 	}
 
 }
