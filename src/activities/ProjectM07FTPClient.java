@@ -51,7 +51,6 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 	
-		//Hola
 		verEdicion();
 		
 		menuVer();
