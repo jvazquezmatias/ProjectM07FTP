@@ -57,6 +57,40 @@ public class ProjectM07FTPClient extends JFrame {
 		pack();
 
 	}
+	
+private void menuFile() {
+		
+		JMenu menuFile = new JMenu("Archivo");
+		menuBar.add(menuFile);
+
+		JMenuItem menuItemFile = new JMenuItem("site manager");
+		menuFile.add(menuItemFile);
+		
+		JSeparator separator = new JSeparator();
+		menuFile.add(separator);
+		
+		JMenuItem mntmNewWindow = new JMenuItem("New Window");
+		menuFile.add(mntmNewWindow);
+		
+		JMenuItem mntmCloseWindow = new JMenuItem("Close Window");
+		menuFile.add(mntmCloseWindow);
+		
+		JSeparator separator_1 = new JSeparator();
+		menuFile.add(separator_1);
+		
+		JMenuItem mntmImport = new JMenuItem("Import");
+		menuFile.add(mntmImport);
+		
+		JMenuItem mntmExport = new JMenuItem("Export");
+		menuFile.add(mntmExport);
+		
+		JSeparator separator_2 = new JSeparator();
+		menuFile.add(separator_2);
+		
+		JMenuItem mntmClose = new JMenuItem("Close");
+		menuFile.add(mntmClose);
+		
+	}
 
 	private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
