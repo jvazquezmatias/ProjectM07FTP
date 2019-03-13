@@ -52,10 +52,24 @@ public class ProjectM07FTPClient extends JFrame {
 		menuView();
 
 		menuServer();
-
+		menuTransfer();
 		pack();
 
 	}
+
+private void menuTransfer() {
+		JMenu menuTransfer = new JMenu("Transfer");
+		menuBar.add(menuTransfer);
+		JMenuItem menuProcessQueue = new JMenuItem("Process Queue");
+		menuTransfer.add(menuProcessQueue);
+		JSeparator separator = new JSeparator();
+		menuTransfer.add(separator);
+	}
+
+
+
+
+
 	
 	private void menuEdit() {
 		JMenu menuEdit = new JMenu("Edit");
