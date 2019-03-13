@@ -47,17 +47,17 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 	
-		verEdicion();
+		menuEdicion();
 		
 		menuVer();
 
-		verServidor();
+		menuServidor();
 
 		pack();
 
 	}
 	
-	private void verEdicion() {
+	private void menuEdicion() {
 		JMenu menuVer = new JMenu("Edición");
 		menuBar.add(menuVer);
 
@@ -72,7 +72,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 
-	private void verServidor() {
+	private void menuServidor() {
 		JMenu menuVer = new JMenu("Servidor");
 		menuBar.add(menuVer);
 
