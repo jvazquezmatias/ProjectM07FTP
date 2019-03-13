@@ -20,7 +20,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,16 +40,16 @@ public class ProjectM07FTPClient extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setPreferredSize(new Dimension(700, 500));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-	
-		menuArchivo();
+
+		menuFile();
 		menuEdit();
-		
+
 		menuView();
 
 		menuServer();
@@ -58,7 +58,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 
-private void menuTransfer() {
+	private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
 		JMenuItem menuProcessQueue = new JMenuItem("Process Queue");
@@ -67,55 +67,52 @@ private void menuTransfer() {
 		menuTransfer.add(separator);
 	}
 
-private void menuArchivo() {
-		
-		JMenu menuFile = new JMenu("Archivo");
+	private void menuFile() {
+
+		JMenu menuFile = new JMenu("File");
 		menuBar.add(menuFile);
 
-		JMenuItem menuItemFile = new JMenuItem("site manager");
+		JMenuItem menuItemFile = new JMenuItem("Site manager");
 		menuFile.add(menuItemFile);
-		
+
 		JSeparator separator = new JSeparator();
 		menuFile.add(separator);
-		
-		JMenuItem mntmNewWindow = new JMenuItem("New Window");
-		menuFile.add(mntmNewWindow);
-		
-		JMenuItem mntmCloseWindow = new JMenuItem("Close Window");
-		menuFile.add(mntmCloseWindow);
-		
+
+		JMenuItem menuItemNewWindow = new JMenuItem("New Window");
+		menuFile.add(menuItemNewWindow);
+
+		JMenuItem menuItemCloseWindow = new JMenuItem("Close Window");
+		menuFile.add(menuItemCloseWindow);
+
 		JSeparator separator_1 = new JSeparator();
 		menuFile.add(separator_1);
-		
-		JMenuItem mntmImport = new JMenuItem("Import");
-		menuFile.add(mntmImport);
-		
-		JMenuItem mntmExport = new JMenuItem("Export");
-		menuFile.add(mntmExport);
-		
+
+		JMenuItem menuItemImport = new JMenuItem("Import");
+		menuFile.add(menuItemImport);
+
+		JMenuItem menuItemExport = new JMenuItem("Export");
+		menuFile.add(menuItemExport);
+
 		JSeparator separator_2 = new JSeparator();
 		menuFile.add(separator_2);
-		
-		JMenuItem mntmClose = new JMenuItem("Close");
-		menuFile.add(mntmClose);
-		
+
+		JMenuItem menuItemClose = new JMenuItem("Close");
+		menuFile.add(menuItemClose);
+
 	}
 
-
-
-	
 	private void menuEdit() {
 		JMenu menuEdit = new JMenu("Edit");
 		menuBar.add(menuEdit);
 
 		JMenuItem menuItemEdit = new JMenuItem("Clear private data...");
 		menuEdit.add(menuItemEdit);
-		
+
 		JSeparator separator = new JSeparator();
 		menuEdit.add(separator);
-		
+
 		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
-		menuEdit.add(menuItemSettigs);		
+		menuEdit.add(menuItemSettigs);
 
 	}
 
@@ -125,25 +122,25 @@ private void menuArchivo() {
 
 		JMenuItem menuItemCancelCurrentOperation = new JMenuItem("Cancel current operation");
 		menuServer.add(menuItemCancelCurrentOperation);
-		
+
 		JSeparator separator = new JSeparator();
 		menuServer.add(separator);
-		
+
 		JMenuItem menuItemReconnect = new JMenuItem("Reconnect");
-		menuServer.add(menuItemReconnect);		
+		menuServer.add(menuItemReconnect);
 		JMenuItem menuItemDisconnect = new JMenuItem("Disconnect");
-		menuServer.add(menuItemDisconnect);			
+		menuServer.add(menuItemDisconnect);
 		JSeparator separator2 = new JSeparator();
 		menuServer.add(separator2);
 		JMenuItem menuItemForceShowingHiddenFiles = new JMenuItem("Force showing hidden files");
-		menuServer.add(menuItemForceShowingHiddenFiles);	
-		
+		menuServer.add(menuItemForceShowingHiddenFiles);
+
 	}
 
 	public void menuView() {
 		JMenu menuView = new JMenu("View");
 		menuBar.add(menuView);
-	
+
 		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
 		menuItemRefresh.setMnemonic(KeyEvent.VK_F1);
 		menuView.add(menuItemRefresh);
