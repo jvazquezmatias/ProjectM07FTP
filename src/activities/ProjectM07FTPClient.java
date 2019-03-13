@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBoxMenuItem;
+import java.awt.event.KeyEvent;
 
 public class ProjectM07FTPClient extends JFrame {
 
@@ -43,11 +44,13 @@ public class ProjectM07FTPClient extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setPreferredSize(new Dimension(700, 500));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		menuBar = new JMenuBar();
-		contentPane.add(menuBar);
+		setJMenuBar(menuBar);
+	
 		
 		
 		verEdicion();
@@ -99,8 +102,9 @@ public class ProjectM07FTPClient extends JFrame {
 	public void menuVer() {
 		JMenu menuVer = new JMenu("Ver");
 		menuBar.add(menuVer);
-
+	
 		JMenuItem menuItemVerActualizar = new JMenuItem("Actualizar");
+		menuItemVerActualizar.setMnemonic(KeyEvent.VK_F1);
 		menuVer.add(menuItemVerActualizar);
 
 		JSeparator separator = new JSeparator();
