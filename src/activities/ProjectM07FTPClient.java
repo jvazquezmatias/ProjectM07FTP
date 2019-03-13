@@ -68,7 +68,7 @@ public class ProjectM07FTPClient extends JFrame {
 		checkBarraHerramientas.setSelected(true);
 		menuVer.add(checkBarraHerramientas);
 
-		JCheckBoxMenuItem checkBarraConexionRapida = new JCheckBoxMenuItem("Barra de conexión ráapida");
+		JCheckBoxMenuItem checkBarraConexionRapida = new JCheckBoxMenuItem("Barra de conexión rápida");
 		checkBarraConexionRapida.setSelected(true);
 		menuVer.add(checkBarraConexionRapida);
 
