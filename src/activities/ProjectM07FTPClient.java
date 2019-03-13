@@ -60,15 +60,32 @@ public class ProjectM07FTPClient extends JFrame {
 private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
-		JMenuItem menuProcessQueue = new JMenuItem("Process Queue");
-		menuTransfer.add(menuProcessQueue);
+		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
+		menuTransfer.add(menuItemProcessQueue);
+		
 		JSeparator separator = new JSeparator();
 		menuTransfer.add(separator);
+		
+		JMenuItem menuItemTransferType = new JMenu("Transfer Type");
+		menuTransfer.add(menuItemTransferType);
+		
+		JMenuItem subMenuItemAutomatic = new JMenuItem("Automatic");
+		menuItemTransferType.add(subMenuItemAutomatic);
+		JMenuItem subMenuItemASCII = new JMenuItem("ASCII");
+		menuItemTransferType.add(subMenuItemASCII);
+		JMenuItem subMenuItemBinary = new JMenuItem("Binary");
+		menuItemTransferType.add(subMenuItemBinary);
+		
+		menuTransfer.add(separator);
+		
+		JMenuItem menuItemSpeedLimit = new JMenu("Speed Limit");
+		menuTransfer.add(menuItemSpeedLimit);
+		
+		JMenuItem subMenuItemEnable = new JMenuItem("Enable");
+		menuItemSpeedLimit.add(subMenuItemEnable);
+		JMenuItem subMenuItemConfigure = new JMenuItem("Configure...");
+		menuItemSpeedLimit.add(subMenuItemConfigure);
 	}
-
-
-
-
 
 	
 	private void menuEdit() {
