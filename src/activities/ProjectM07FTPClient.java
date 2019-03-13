@@ -1,18 +1,14 @@
 package activities;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Point;
-import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBoxMenuItem;
