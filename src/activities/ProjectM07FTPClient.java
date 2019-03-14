@@ -20,6 +20,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
+	private JMenu menuHelp;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -54,75 +55,54 @@ public class ProjectM07FTPClient extends JFrame {
 
 		menuServer();
 		menuTransfer();
+		menuHelp();
 		pack();
 
-	}
-	
-	private void menuFile() {
-		
-		JMenu menuFile = new JMenu("Archivo");
-		menuBar.add(menuFile);
-
-		JMenuItem menuItemFile = new JMenuItem("site manager");
-		menuFile.add(menuItemFile);
-		
-		JSeparator separator = new JSeparator();
-		menuFile.add(separator);
-		
-		JMenuItem mntmNewWindow = new JMenuItem("New Window");
-		menuFile.add(mntmNewWindow);
-		
-		JMenuItem mntmCloseWindow = new JMenuItem("Close Window");
-		menuFile.add(mntmCloseWindow);
-		
-		JSeparator separator_1 = new JSeparator();
-		menuFile.add(separator_1);
-		
-		JMenuItem mntmImport = new JMenuItem("Import");
-		menuFile.add(mntmImport);
-		
-		JMenuItem mntmExport = new JMenuItem("Export");
-		menuFile.add(mntmExport);
-		
-		JSeparator separator_2 = new JSeparator();
-		menuFile.add(separator_2);
-		
-		JMenuItem mntmClose = new JMenuItem("Close");
-		menuFile.add(mntmClose);
-		
 	}
 
 	private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
-		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
-		menuTransfer.add(menuItemProcessQueue);
-		
+		JMenuItem menuProcessQueue = new JMenuItem("Process Queue");
+		menuTransfer.add(menuProcessQueue);
 		JSeparator separator = new JSeparator();
 		menuTransfer.add(separator);
-		
-		JMenuItem menuItemTransferType = new JMenu("Transfer Type");
-		menuTransfer.add(menuItemTransferType);
-		
-		JMenuItem subMenuItemAutomatic = new JMenuItem("Automatic");
-		menuItemTransferType.add(subMenuItemAutomatic);
-		JMenuItem subMenuItemASCII = new JMenuItem("ASCII");
-		menuItemTransferType.add(subMenuItemASCII);
-		JMenuItem subMenuItemBinary = new JMenuItem("Binary");
-		menuItemTransferType.add(subMenuItemBinary);
-		
-		menuTransfer.add(separator);
-		
-		JMenuItem menuItemSpeedLimit = new JMenu("Speed Limit");
-		menuTransfer.add(menuItemSpeedLimit);
-		
-		JMenuItem subMenuItemEnable = new JMenuItem("Enable");
-		menuItemSpeedLimit.add(subMenuItemEnable);
-		JMenuItem subMenuItemConfigure = new JMenuItem("Configure...");
-		menuItemSpeedLimit.add(subMenuItemConfigure);
 	}
 
-	
+	private void menuFile() {
+
+		JMenu menuFile = new JMenu("File");
+		menuBar.add(menuFile);
+
+		JMenuItem menuItemFile = new JMenuItem("Site manager");
+		menuFile.add(menuItemFile);
+
+		JSeparator separator = new JSeparator();
+		menuFile.add(separator);
+
+		JMenuItem menuItemNewWindow = new JMenuItem("New Window");
+		menuFile.add(menuItemNewWindow);
+
+		JMenuItem menuItemCloseWindow = new JMenuItem("Close Window");
+		menuFile.add(menuItemCloseWindow);
+
+		JSeparator separator_1 = new JSeparator();
+		menuFile.add(separator_1);
+
+		JMenuItem menuItemImport = new JMenuItem("Import");
+		menuFile.add(menuItemImport);
+
+		JMenuItem menuItemExport = new JMenuItem("Export");
+		menuFile.add(menuItemExport);
+
+		JSeparator separator_2 = new JSeparator();
+		menuFile.add(separator_2);
+
+		JMenuItem menuItemClose = new JMenuItem("Close");
+		menuFile.add(menuItemClose);
+
+	}
+
 	private void menuEdit() {
 		JMenu menuEdit = new JMenu("Edit");
 		menuBar.add(menuEdit);
@@ -200,6 +180,34 @@ public class ProjectM07FTPClient extends JFrame {
 		JCheckBoxMenuItem menuItemTransferQueue = new JCheckBoxMenuItem("Transfer queue");
 		menuItemTransferQueue.setSelected(true);
 		menuView.add(menuItemTransferQueue);
+	}
+
+	private void menuHelp() {
+		menuHelp = new JMenu("Help");
+		menuBar.add(menuHelp);
+		
+		JMenuItem menuItemCheckupdates = new JMenuItem("Check for updates");
+		menuItemCheckupdates.setMnemonic('u');
+		menuHelp.add(menuItemCheckupdates);
+
+		JSeparator separator_2 = new JSeparator();
+		menuHelp.add(separator_2);
+		
+		JMenuItem menuItemFaqs = new JMenuItem("Faqs");
+		menuItemFaqs.setMnemonic('F');
+		menuHelp.add(menuItemFaqs);
+		
+		JMenuItem menuItemReportBug = new JMenuItem("Report a bug");
+		menuItemReportBug.setMnemonic('R');
+		menuItemReportBug.setSelected(true);
+		menuHelp.add(menuItemReportBug);
+
+		JSeparator separator_3 = new JSeparator();
+		menuHelp.add(separator_3);
+		
+		JMenuItem menuItemAbout = new JMenuItem("About");
+		menuItemAbout.setMnemonic('A');
+		menuHelp.add(menuItemAbout);
 	}
 
 }
