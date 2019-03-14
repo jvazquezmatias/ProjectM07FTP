@@ -58,7 +58,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 	
-private void menuFile() {
+	private void menuFile() {
 		
 		JMenu menuFile = new JMenu("Archivo");
 		menuBar.add(menuFile);
