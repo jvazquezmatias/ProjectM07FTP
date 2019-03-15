@@ -74,7 +74,7 @@ public class ProjectM07FTPClient extends JFrame {
 		JMenu menuFile = new JMenu("File");
 		menuBar.add(menuFile);
 
-		JMenuItem menuItemFile = new JMenuItem("Site manager");
+		JMenuItem menuItemFile = new JMenuItem("Site Manager");
 		menuFile.add(menuItemFile);
 
 		JSeparator separator = new JSeparator();
