@@ -5,12 +5,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.FlowLayout;
 import java.awt.Point;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JSeparator;
+import javax.swing.KeyStroke;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.event.KeyEvent;
 
@@ -106,7 +108,7 @@ public class ProjectM07FTPClient extends JFrame {
 	private void menuEdit() {
 		JMenu menuEdit = new JMenu("Edit");
 		menuBar.add(menuEdit);
-
+		menuEdit.setMnemonic('e');
 		JMenuItem menuItemEdit = new JMenuItem("Clear private data...");
 		menuEdit.add(menuItemEdit);
 
@@ -121,17 +123,23 @@ public class ProjectM07FTPClient extends JFrame {
 	private void menuServer() {
 		JMenu menuServer = new JMenu("Server");
 		menuBar.add(menuServer);
+		menuServer.setMnemonic('s');
 
 		JMenuItem menuItemCancelCurrentOperation = new JMenuItem("Cancel current operation");
 		menuServer.add(menuItemCancelCurrentOperation);
+		menuItemCancelCurrentOperation.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_PERIOD, Event.CTRL_MASK));
 
 		JSeparator separator = new JSeparator();
 		menuServer.add(separator);
 
 		JMenuItem menuItemReconnect = new JMenuItem("Reconnect");
 		menuServer.add(menuItemReconnect);
+		menuItemReconnect.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, Event.CTRL_MASK));
+
 		JMenuItem menuItemDisconnect = new JMenuItem("Disconnect");
 		menuServer.add(menuItemDisconnect);
+		menuItemDisconnect.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, Event.CTRL_MASK));
+
 		JSeparator separator2 = new JSeparator();
 		menuServer.add(separator2);
 		JMenuItem menuItemForceShowingHiddenFiles = new JMenuItem("Force showing hidden files");
