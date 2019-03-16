@@ -15,6 +15,15 @@ import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import javax.swing.JToolBar;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.JToggleButton;
+import java.awt.Component;
+import javax.swing.Box;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
 
 public class ProjectM07FTPClient extends JFrame {
 
@@ -41,12 +50,15 @@ public class ProjectM07FTPClient extends JFrame {
 		setLocation(new Point(200, 170));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
+		contentPane.setMaximumSize(new Dimension(40, 32767));
 		contentPane.setPreferredSize(new Dimension(700, 500));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-
+		contentPane.setLayout(null);
+		
+		addToolBar();
+		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -57,9 +69,62 @@ public class ProjectM07FTPClient extends JFrame {
 
 		menuServer();
 		menuTransfer();
+		menuBookmarks();
 		menuHelp();
+		
 		pack();
 
+	}
+
+	
+
+	private void addToolBar() {
+		JToolBar toolBar = new JToolBar();
+		toolBar.setOpaque(false);
+		toolBar.setBorder(new EmptyBorder(0, 0, 0, 0));
+		toolBar.setFocusTraversalKeysEnabled(false);
+		toolBar.setFocusable(false);
+		toolBar.setBounds(10, 10, 680, 39);
+		toolBar.setFloatable(false);
+		contentPane.add(toolBar);
+		
+		JButton btnToolBarSiteManager = new JButton("");
+		btnToolBarSiteManager.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnToolBarSiteManager.setOpaque(false);
+		btnToolBarSiteManager.setMargin(new Insets(0, 0, 0, 25));
+		btnToolBarSiteManager.setToolTipText("Open the Site Manager");
+		btnToolBarSiteManager.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconServerToolBar.png")));
+		toolBar.add(btnToolBarSiteManager);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setMaximumSize(new Dimension(15, 32767));
+		separator.setPreferredSize(new Dimension(0, 1));
+		toolBar.add(separator);
+		
+		JButton btnToolBarRefresh = new JButton("");
+		btnToolBarRefresh.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnToolBarRefresh.setToolTipText("Refresh the file and folder lists");
+		btnToolBarRefresh.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconRefreshToolBar.png")));
+		toolBar.add(btnToolBarRefresh);
+		
+		JButton btnToolBarCancel = new JButton("");
+		btnToolBarCancel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnToolBarCancel.setToolTipText("Cancels the current operation");
+		btnToolBarCancel.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconCancelToolBar.png")));
+		toolBar.add(btnToolBarCancel);
+		
+		JButton btnToolBarServerDisconnect = new JButton("");
+		btnToolBarServerDisconnect.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnToolBarServerDisconnect.setToolTipText("Disconnects from the currently visible server");
+		btnToolBarServerDisconnect.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarServerDisconnect.png")));
+		toolBar.add(btnToolBarServerDisconnect);
+		
+		JButton btnToolBarServerConnect = new JButton("");
+		btnToolBarServerConnect.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnToolBarServerConnect.setToolTipText("Reconnects to the last used server");
+		btnToolBarServerConnect.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarServerConnect.png")));
+		toolBar.add(btnToolBarServerConnect);		
 	}
 
 	private void menuTransfer() {
@@ -109,6 +174,7 @@ public class ProjectM07FTPClient extends JFrame {
 		JMenu menuEdit = new JMenu("Edit");
 		menuBar.add(menuEdit);
 		menuEdit.setMnemonic('e');
+		
 		JMenuItem menuItemEdit = new JMenuItem("Clear private data...");
 		menuEdit.add(menuItemEdit);
 
@@ -149,10 +215,12 @@ public class ProjectM07FTPClient extends JFrame {
 
 	public void menuView() {
 		JMenu menuView = new JMenu("View");
+		menuView.setMnemonic('v');
 		menuBar.add(menuView);
 
 		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
-		menuItemRefresh.setMnemonic(KeyEvent.VK_F1);
+		menuItemRefresh.setMnemonic(KeyEvent.VK_C);
+		menuItemRefresh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
 		menuView.add(menuItemRefresh);
 
 		JSeparator separator = new JSeparator();
@@ -188,6 +256,25 @@ public class ProjectM07FTPClient extends JFrame {
 		JCheckBoxMenuItem menuItemTransferQueue = new JCheckBoxMenuItem("Transfer queue");
 		menuItemTransferQueue.setSelected(true);
 		menuView.add(menuItemTransferQueue);
+	}
+	
+	private void menuBookmarks() {
+		JMenu menuBookmarks = new JMenu("Bookmarks");
+		menuBookmarks.setMnemonic('b');
+		menuBar.add(menuBookmarks);
+		
+		
+		JMenuItem menuItemAddBookmark = new JMenuItem("Add bookmark...");
+		menuItemAddBookmark.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK));
+		menuBookmarks.add(menuItemAddBookmark);
+		
+		JMenuItem menuItemManageBookmarks = new JMenuItem("Manage bookmarks...");
+		menuItemManageBookmarks.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
+		menuBookmarks.setMnemonic(KeyEvent.VK_F1);
+		menuBookmarks.add(menuItemManageBookmarks);
+		
+		
+		
 	}
 
 	private void menuHelp() {
