@@ -30,13 +30,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 
+import javax.swing.ImageIcon;
+
 public class ProjectM07FTPClient extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
-	private JMenu menuHelp;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -331,21 +332,24 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 	private void menuHelp() {
-		menuHelp = new JMenu("Help");
+		JMenu menuHelp = new JMenu("Help");
+		menuHelp.setMnemonic('H');
 		menuBar.add(menuHelp);
 		
-		JMenuItem menuItemCheckupdates = new JMenuItem("Check for updates");
+		JMenuItem menuItemCheckupdates = new JMenuItem("Check for updates...");
+		menuItemCheckupdates.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarUpdate.png")));
 		menuItemCheckupdates.setMnemonic('u');
 		menuHelp.add(menuItemCheckupdates);
 
 		JSeparator separator_2 = new JSeparator();
 		menuHelp.add(separator_2);
 		
-		JMenuItem menuItemFaqs = new JMenuItem("Faqs");
+		JMenuItem menuItemFaqs = new JMenuItem("Faqs...");
+		menuItemFaqs.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarFaq.png")));
 		menuItemFaqs.setMnemonic('F');
 		menuHelp.add(menuItemFaqs);
 		
-		JMenuItem menuItemReportBug = new JMenuItem("Report a bug");
+		JMenuItem menuItemReportBug = new JMenuItem("Report a bug...");
 		menuItemReportBug.setMnemonic('R');
 		menuItemReportBug.setSelected(true);
 		menuHelp.add(menuItemReportBug);
@@ -353,7 +357,9 @@ public class ProjectM07FTPClient extends JFrame {
 		JSeparator separator_3 = new JSeparator();
 		menuHelp.add(separator_3);
 		
-		JMenuItem menuItemAbout = new JMenuItem("About");
+		JMenuItem menuItemAbout = new JMenuItem("About...");
+		menuItemAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
+		menuItemAbout.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarAbout.png")));
 		menuItemAbout.setMnemonic('A');
 		menuHelp.add(menuItemAbout);
 	}
