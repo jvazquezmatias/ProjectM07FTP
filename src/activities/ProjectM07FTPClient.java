@@ -29,6 +29,7 @@ import java.awt.List;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+
 public class ProjectM07FTPClient extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -65,7 +66,6 @@ public class ProjectM07FTPClient extends JFrame {
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-
 		menuFile();
 		menuEdit();
 
@@ -157,50 +157,36 @@ public class ProjectM07FTPClient extends JFrame {
 	private void menuTransfer() {
 		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
-		JMenuItem menuProcessQueue = new JMenuItem("Process Queue");
-		menuTransfer.add(menuProcessQueue);
+		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
+		menuItemProcessQueue.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		menuTransfer.add(menuItemProcessQueue);
+		
 		JSeparator separator = new JSeparator();
 		menuTransfer.add(separator);
+		
+		JMenuItem menuItemTransferType = new JMenu("Transfer Type");
+		menuTransfer.add(menuItemTransferType);
+		
+		JMenuItem subMenuItemAutomatic = new JMenuItem("Automatic");
+		subMenuItemAutomatic.setMnemonic('M');
+		menuItemTransferType.add(subMenuItemAutomatic);
+		JMenuItem subMenuItemASCII = new JMenuItem("ASCII");
+		menuItemTransferType.add(subMenuItemASCII);
+		JMenuItem subMenuItemBinary = new JMenuItem("Binary");
+		menuItemTransferType.add(subMenuItemBinary);
+		
+		menuTransfer.add(separator);
+		
+		JMenuItem menuItemSpeedLimit = new JMenu("Speed Limit");
+		menuTransfer.add(menuItemSpeedLimit);
+		
+		JMenuItem subMenuItemEnable = new JMenuItem("Enable");
+		menuItemSpeedLimit.add(subMenuItemEnable);
+		JMenuItem subMenuItemConfigure = new JMenuItem("Configure...");
+		menuItemSpeedLimit.add(subMenuItemConfigure);
 	}
 
-	private void menuFile() {
-
-		JMenu menuFile = new JMenu("File");
-		menuBar.add(menuFile);
-
-		JMenuItem menuItemFile = new JMenuItem("Site Manager");
-		menuItemFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
-		menuFile.add(menuItemFile);
-
-		JSeparator separator = new JSeparator();
-		menuFile.add(separator);
-
-		JMenuItem menuItemNewWindow = new JMenuItem("New Window");
-		menuItemNewWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_MASK));
-		menuFile.add(menuItemNewWindow);
-
-		JMenuItem menuItemCloseWindow = new JMenuItem("Close Window");
-		menuItemCloseWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK));
-		menuFile.add(menuItemCloseWindow);
-
-		JSeparator separator_1 = new JSeparator();
-		menuFile.add(separator_1);
-
-		JMenuItem menuItemImport = new JMenuItem("Import");
-		menuFile.add(menuItemImport);
-
-		JMenuItem menuItemExport = new JMenuItem("Export");
-		menuFile.add(menuItemExport);
-
-		JSeparator separator_2 = new JSeparator();
-		menuFile.add(separator_2);
-
-		JMenuItem menuItemClose = new JMenuItem("Close");
-		menuItemClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
-		menuFile.add(menuItemClose);
-
-	}
-
+	
 	private void menuEdit() {
 		JMenu menuEdit = new JMenu("Edit");
 		menuBar.add(menuEdit);
@@ -307,7 +293,43 @@ public class ProjectM07FTPClient extends JFrame {
 		
 		
 	}
+	private void menuFile() {
 
+		JMenu menuFile = new JMenu("File");
+		menuBar.add(menuFile);
+
+		JMenuItem menuItemFile = new JMenuItem("Site Manager");
+		menuItemFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		menuFile.add(menuItemFile);
+
+		JSeparator separator = new JSeparator();
+		menuFile.add(separator);
+
+		JMenuItem menuItemNewWindow = new JMenuItem("New Window");
+		menuItemNewWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_MASK));
+		menuFile.add(menuItemNewWindow);
+
+		JMenuItem menuItemCloseWindow = new JMenuItem("Close Window");
+		menuItemCloseWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, InputEvent.CTRL_MASK));
+		menuFile.add(menuItemCloseWindow);
+
+		JSeparator separator_1 = new JSeparator();
+		menuFile.add(separator_1);
+
+		JMenuItem menuItemImport = new JMenuItem("Import");
+		menuFile.add(menuItemImport);
+
+		JMenuItem menuItemExport = new JMenuItem("Export");
+		menuFile.add(menuItemExport);
+
+		JSeparator separator_2 = new JSeparator();
+		menuFile.add(separator_2);
+
+		JMenuItem menuItemClose = new JMenuItem("Close");
+		menuItemClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+		menuFile.add(menuItemClose);
+
+	}
 	private void menuHelp() {
 		menuHelp = new JMenu("Help");
 		menuBar.add(menuHelp);
