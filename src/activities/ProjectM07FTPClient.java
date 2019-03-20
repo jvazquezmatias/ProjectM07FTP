@@ -237,6 +237,7 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar.add(menuView);
 
 		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
+		menuItemRefresh.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarRefresh.png")));
 		menuItemRefresh.setMnemonic(KeyEvent.VK_C);
 		menuItemRefresh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
 		menuView.add(menuItemRefresh);
@@ -283,6 +284,7 @@ public class ProjectM07FTPClient extends JFrame {
 		
 		
 		JMenuItem menuItemAddBookmark = new JMenuItem("Add bookmark...");
+		menuItemAddBookmark.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarBookmark.png")));
 		menuItemAddBookmark.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK));
 		menuBookmarks.add(menuItemAddBookmark);
 		
