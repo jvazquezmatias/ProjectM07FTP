@@ -4,17 +4,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
+
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.FlowLayout;
 import java.awt.Point;
+import java.awt.Window;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.InputEvent;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -28,6 +36,9 @@ import javax.swing.JComboBox;
 import java.awt.List;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JEditorPane;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
 
 
 import javax.swing.ImageIcon;
@@ -45,6 +56,7 @@ public class ProjectM07FTPClient extends JFrame {
 				try {
 					ProjectM07FTPClient frame = new ProjectM07FTPClient();
 					frame.setVisible(true);
+					frame.setSize(800, 550);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,16 +66,19 @@ public class ProjectM07FTPClient extends JFrame {
 
 	public ProjectM07FTPClient() {
 		setLocation(new Point(200, 170));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new MyWindowAdapter());
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setMaximumSize(new Dimension(40, 32767));
-		contentPane.setPreferredSize(new Dimension(700, 500));
+		contentPane.setPreferredSize(new Dimension(800, 550));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		addToolBar();
+		
+		addFastConnection();
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -81,7 +96,57 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 
+
 	
+	public void addFastConnection() {
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 44, 786, 46);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblHost = new JLabel("Host:");
+		lblHost.setBounds(0, 15, 47, 15);
+		panel.add(lblHost);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(37, 12, 74, 18);
+		panel.add(editorPane);
+		
+		JLabel lblUsuari = new JLabel("Username:");
+		lblUsuari.setBounds(111, 15, 74, 15);
+		panel.add(lblUsuari);
+		
+		JEditorPane editorPane_1 = new JEditorPane();
+		editorPane_1.setBounds(187, 12, 90, 18);
+		panel.add(editorPane_1);
+		
+		JLabel lblContrasea = new JLabel("Password:");
+		lblContrasea.setBounds(282, 15, 70, 15);
+		panel.add(lblContrasea);
+		
+		JEditorPane editorPane_2 = new JEditorPane();
+		editorPane_2.setBounds(354, 12, 100, 18);
+		panel.add(editorPane_2);
+		
+		JLabel lblPort = new JLabel("Port:");
+		lblPort.setBounds(459, 15, 36, 15);
+		panel.add(lblPort);
+		
+		JEditorPane editorPane_3 = new JEditorPane();
+		editorPane_3.setBounds(496, 12, 47, 18);
+		panel.add(editorPane_3);
+		
+		JButton btnConnect = new JButton("Connect");
+		btnConnect.setBounds(555, 10, 90, 25);
+		panel.add(btnConnect);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "", "\n" + 
+				"Clean bar ", "Clean history" }));
+		comboBox.setBounds(657, 10, 98, 24);
+		panel.add(comboBox);
+		
+	}
 
 	private void addToolBar() {
 		JToolBar toolBar = new JToolBar();
@@ -153,6 +218,8 @@ public class ProjectM07FTPClient extends JFrame {
 		btnToolBarServerConnect.setToolTipText("Reconnects to the last used server");
 		btnToolBarServerConnect.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarServerConnect.png")));
 		toolBar.add(btnToolBarServerConnect);		
+		
+		
 	}
 
 	private void menuTransfer() {
@@ -365,5 +432,24 @@ public class ProjectM07FTPClient extends JFrame {
 		menuItemAbout.setMnemonic('A');
 		menuHelp.add(menuItemAbout);
 	}
+	
+	class MyWindowAdapter extends WindowAdapter {
 
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// TODO Auto-generated method stub
+
+			String op[] = { "Exit", "Cancel" };
+
+			int n = JOptionPane.showOptionDialog(e.getComponent(), "Quieres salir?", "Cerrar",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[0]);
+
+			if (n == JOptionPane.YES_OPTION) {
+				((Window) e.getComponent()).dispose();
+
+			}
+
+		}
+
+	}
 }
