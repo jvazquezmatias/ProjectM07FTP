@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Dimension;
 import java.awt.Event;
-import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.Window;
 
@@ -27,21 +26,15 @@ import java.awt.event.InputEvent;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import javax.swing.JToggleButton;
-import java.awt.Component;
-import javax.swing.Box;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
 import javax.swing.JComboBox;
-import java.awt.List;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JEditorPane;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 
 
-import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -448,7 +441,6 @@ public class ProjectM07FTPClient extends JFrame {
 
 		@Override
 		public void windowClosing(WindowEvent e) {
-			// TODO Auto-generated method stub
 
 			String op[] = { "Exit", "Cancel" };
 
