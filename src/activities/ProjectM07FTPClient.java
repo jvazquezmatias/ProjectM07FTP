@@ -452,7 +452,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 			String op[] = { "Exit", "Cancel" };
 
-			int n = JOptionPane.showOptionDialog(e.getComponent(), "Quieres salir?", "Cerrar",
+			int n = JOptionPane.showOptionDialog(e.getComponent(), "Do you want to exit?", "Close",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[0]);
 
 			if (n == JOptionPane.YES_OPTION) {

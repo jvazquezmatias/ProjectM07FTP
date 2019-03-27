@@ -42,11 +42,6 @@ public class ProjectM07FTPSiteManagerFrame extends JFrame {
 		
 		
 		
-		
-		
-		
-		
-		
 	}
 
 	private void addTabGeneral() {
