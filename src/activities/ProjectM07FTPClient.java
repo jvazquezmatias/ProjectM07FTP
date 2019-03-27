@@ -267,6 +267,7 @@ public class ProjectM07FTPClient extends JFrame {
 		menuEdit.add(separator);
 
 		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
+		menuItemSettigs.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarSettings.png")));
 		menuEdit.add(menuItemSettigs);
 
 	}
