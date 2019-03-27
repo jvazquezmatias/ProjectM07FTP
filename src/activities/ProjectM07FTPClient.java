@@ -367,6 +367,7 @@ public class ProjectM07FTPClient extends JFrame {
 	private void menuFile() {
 
 		JMenu menuFile = new JMenu("File");
+		menuFile.setMnemonic('F');
 		menuBar.add(menuFile);
 
 		JMenuItem menuItemFile = new JMenuItem("Site Manager");
@@ -388,9 +389,11 @@ public class ProjectM07FTPClient extends JFrame {
 		menuFile.add(separator_1);
 
 		JMenuItem menuItemImport = new JMenuItem("Import");
+		menuItemImport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarInport.png")));
 		menuFile.add(menuItemImport);
 
 		JMenuItem menuItemExport = new JMenuItem("Export");
+		menuItemExport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconFileExport.png")));
 		menuFile.add(menuItemExport);
 
 		JSeparator separator_2 = new JSeparator();
