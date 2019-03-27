@@ -301,7 +301,6 @@ public class ProjectM07FTPClient extends JFrame {
 
 	public void menuView() {
 		JMenu menuView = new JMenu("View");
-		menuView.setMnemonic('V');
 		menuBar.add(menuView);
 
 		JMenuItem menuItemRefresh = new JMenuItem("Refresh");
@@ -357,6 +356,7 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBookmarks.add(menuItemAddBookmark);
 		
 		JMenuItem menuItemManageBookmarks = new JMenuItem("Manage bookmarks...");
+		menuItemManageBookmarks.setMnemonic('M');
 		menuItemManageBookmarks.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
 		menuBookmarks.setMnemonic(KeyEvent.VK_F1);
 		menuBookmarks.add(menuItemManageBookmarks);
