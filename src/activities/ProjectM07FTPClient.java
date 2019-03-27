@@ -389,11 +389,11 @@ public class ProjectM07FTPClient extends JFrame {
 		menuFile.add(separator_1);
 
 		JMenuItem menuItemImport = new JMenuItem("Import");
-		menuItemImport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarInport.png")));
+		menuItemImport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarImport.png")));
 		menuFile.add(menuItemImport);
 
 		JMenuItem menuItemExport = new JMenuItem("Export");
-		menuItemExport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconFileExport.png")));
+		menuItemExport.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarExport.png")));
 		menuFile.add(menuItemExport);
 
 		JSeparator separator_2 = new JSeparator();
