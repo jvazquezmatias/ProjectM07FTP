@@ -42,6 +42,8 @@ import javax.swing.DefaultComboBoxModel;
 
 
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProjectM07FTPClient extends JFrame {
 
@@ -400,6 +402,11 @@ public class ProjectM07FTPClient extends JFrame {
 		menuFile.add(separator_2);
 
 		JMenuItem menuItemClose = new JMenuItem("Close");
+		menuItemClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 dispose();
+			}
+		});
 		menuItemClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		menuFile.add(menuItemClose);
 
