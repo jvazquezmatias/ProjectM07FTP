@@ -31,6 +31,7 @@ public class ProjectM07FTPSettingsDialog extends JDialog{
 	 * @throws HeadlessException 
 	 */
 	public ProjectM07FTPSettingsDialog() throws HeadlessException, URISyntaxException, AWTException {
+		setTitle("Settings");
 		setBounds(100, 100, 750, 500);
 		ProjectM07FTPSettingsPanel dialogContent = new ProjectM07FTPSettingsPanel();
 		setContentPane(dialogContent);
