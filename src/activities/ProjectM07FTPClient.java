@@ -5,8 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
-
+import java.awt.AWTException;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Point;
@@ -22,6 +21,7 @@ import javax.swing.JCheckBoxMenuItem;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URISyntaxException;
 import java.awt.event.InputEvent;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -31,6 +31,8 @@ import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JEditorPane;
 import javax.swing.DefaultComboBoxModel;
 
@@ -262,6 +264,20 @@ public class ProjectM07FTPClient extends JFrame {
 		menuEdit.add(separator);
 
 		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
+		menuItemSettigs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ProjectM07FTPSettingsDialog dialog = new ProjectM07FTPSettingsDialog();
+					dialog.setModal(true);
+					dialog.setVisible(true);
+					
+				} catch (HeadlessException | URISyntaxException | AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		menuItemSettigs.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarSettings.png")));
 		menuEdit.add(menuItemSettigs);
 
