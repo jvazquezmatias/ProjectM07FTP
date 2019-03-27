@@ -8,14 +8,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import java.awt.Panel;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.DefaultComboBoxModel;
 
-public class ProjectM07FTPSiteManagerFrame extends JFrame {
+public class ProjectM07FTPSiteManagerDialog extends JDialog{
 
 	private JPanel contentPane;
 	JTabbedPane tabbedPane;
@@ -26,8 +30,8 @@ public class ProjectM07FTPSiteManagerFrame extends JFrame {
 	 
 	
 	
-	public ProjectM07FTPSiteManagerFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public ProjectM07FTPSiteManagerDialog() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 753, 522);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,4 +144,5 @@ public class ProjectM07FTPSiteManagerFrame extends JFrame {
 		
 		
 	}
+
 }

@@ -46,12 +46,13 @@ public class ProjectM07FTPClient extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
+	static ProjectM07FTPClient frame;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProjectM07FTPClient frame = new ProjectM07FTPClient();
+					frame = new ProjectM07FTPClient();
 					frame.setVisible(true);
 					frame.setSize(800, 550);
 				} catch (Exception e) {
@@ -382,6 +383,16 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar.add(menuFile);
 
 		JMenuItem menuItemFile = new JMenuItem("Site Manager");
+		menuItemFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			ProjectM07FTPSiteManagerDialog siteManager = new ProjectM07FTPSiteManagerDialog();
+			siteManager.setModal(true);
+			siteManager.setVisible(true);
+			
+				
+			}
+		});
 		menuItemFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		menuFile.add(menuItemFile);
 
