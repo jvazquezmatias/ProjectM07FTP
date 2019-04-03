@@ -1,4 +1,4 @@
-package activities;
+package vista;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

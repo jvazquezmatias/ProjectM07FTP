@@ -1,4 +1,4 @@
-package activities;
+package model;
 
 public class ProjectM07FTPDadesConnexio {
 

@@ -1,4 +1,4 @@
-package activities;
+package vista;
 
 import java.awt.AWTException;
 import java.awt.Dimension;
