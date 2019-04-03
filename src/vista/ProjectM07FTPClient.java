@@ -241,7 +241,7 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 
 	private void menuTransfer() {
-		JMenu menuTransfer = new JMenu("Transfer");
+		JMenu menuTransfer = new JMenu("Transferr");
 		menuBar.add(menuTransfer);
 		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
 		menuItemProcessQueue.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
