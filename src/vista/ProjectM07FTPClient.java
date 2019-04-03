@@ -43,6 +43,9 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import java.awt.Rectangle;
+import javax.swing.JTextPane;
+import javax.swing.JTextField;
 
 public class ProjectM07FTPClient extends JFrame {
 
@@ -51,6 +54,10 @@ public class ProjectM07FTPClient extends JFrame {
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	static ProjectM07FTPClient frame;
+	private JTextField textFieldHost;
+	private JTextField textFieldUser;
+	private JTextField textFieldPassword;
+	private JTextField textFieldPort;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -58,7 +65,7 @@ public class ProjectM07FTPClient extends JFrame {
 				try {
 					frame = new ProjectM07FTPClient();
 					frame.setVisible(true);
-					frame.setSize(800, 550);
+					frame.setSize(700, 550);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,12 +74,13 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 
 	public ProjectM07FTPClient() {
+		setBounds(new Rectangle(0, 0, 0, 0));
 		setLocation(new Point(200, 170));
 		addWindowListener(new MyWindowAdapter());
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setMaximumSize(new Dimension(40, 32767));
-		contentPane.setPreferredSize(new Dimension(800, 550));
+		contentPane.setPreferredSize(new Dimension(700, 550));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -101,7 +109,7 @@ public class ProjectM07FTPClient extends JFrame {
 
 	public void addFastConnection() {
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 44, 786, 46);
+		panel.setBounds(10, 44, 680, 46);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -109,42 +117,55 @@ public class ProjectM07FTPClient extends JFrame {
 		lblHost.setBounds(0, 15, 47, 15);
 		panel.add(lblHost);
 
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(37, 12, 74, 18);
-		panel.add(editorPane);
-
 		JLabel lblUsuari = new JLabel("Username:");
 		lblUsuari.setBounds(111, 15, 74, 15);
 		panel.add(lblUsuari);
-
-		JEditorPane editorPane_1 = new JEditorPane();
-		editorPane_1.setBounds(187, 12, 90, 18);
-		panel.add(editorPane_1);
 
 		JLabel lblContrasea = new JLabel("Password:");
 		lblContrasea.setBounds(282, 15, 70, 15);
 		panel.add(lblContrasea);
 
-		JEditorPane editorPane_2 = new JEditorPane();
-		editorPane_2.setBounds(354, 12, 100, 18);
-		panel.add(editorPane_2);
-
 		JLabel lblPort = new JLabel("Port:");
 		lblPort.setBounds(459, 15, 36, 15);
 		panel.add(lblPort);
 
-		JEditorPane editorPane_3 = new JEditorPane();
-		editorPane_3.setBounds(496, 12, 47, 18);
-		panel.add(editorPane_3);
-
 		JButton btnConnect = new JButton("Connect");
 		btnConnect.setBounds(555, 10, 90, 25);
 		panel.add(btnConnect);
-
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "", "\n" + "Clean bar ", "Clean history" }));
-		comboBox.setBounds(657, 10, 98, 24);
-		panel.add(comboBox);
+		
+		JMenuBar menuBarFastConn = new JMenuBar();
+		menuBarFastConn.setBounds(650, 12, 20, 21);
+		panel.add(menuBarFastConn);
+		
+		JMenu menu = new JMenu("");
+		menu.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarFlecha.png")));
+		menuBarFastConn.add(menu);
+		
+		JMenuItem mntmCleanBar = new JMenuItem("Clean Bar");
+		menu.add(mntmCleanBar);
+		
+		JMenuItem mntmCleanHistory = new JMenuItem("Clean History");
+		menu.add(mntmCleanHistory);
+		
+		textFieldHost = new JTextField();
+		textFieldHost.setBounds(37, 13, 64, 19);
+		panel.add(textFieldHost);
+		textFieldHost.setColumns(10);
+		
+		textFieldUser = new JTextField();
+		textFieldUser.setBounds(187, 13, 90, 19);
+		panel.add(textFieldUser);
+		textFieldUser.setColumns(10);
+		
+		textFieldPassword = new JTextField();
+		textFieldPassword.setBounds(354, 13, 98, 19);
+		panel.add(textFieldPassword);
+		textFieldPassword.setColumns(10);
+		
+		textFieldPort = new JTextField();
+		textFieldPort.setBounds(496, 13, 47, 19);
+		panel.add(textFieldPort);
+		textFieldPort.setColumns(10);
 
 	}
 
@@ -528,5 +549,4 @@ public class ProjectM07FTPClient extends JFrame {
 		}
 
 	}
-
 }
