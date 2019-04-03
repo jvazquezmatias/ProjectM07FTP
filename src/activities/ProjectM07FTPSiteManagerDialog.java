@@ -27,6 +27,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.JSpinner;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProjectM07FTPSiteManagerDialog extends JDialog {
 
@@ -255,6 +257,8 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 
 	private void addTabTransferSettings() {
 
+		
+		
 		Panel transferSettingsPanel = new Panel();
 		tabbedPane.addTab("Transfer Settings", null, transferSettingsPanel, null);
 		transferSettingsPanel.setLayout(null);
@@ -297,7 +301,20 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		JSpinner spinner = new JSpinner(monthModel);
 		spinner.setOpaque(false);
 		spinner.setBounds(288, 91, 42, 20);
+		spinner.setEnabled(false);
 		transferSettingsPanel.add(spinner);
+		
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				
+				if(chckbxNewCheckBox.isSelected()) {
+					spinner.setEnabled(true);
+				}else {
+					spinner.setEnabled(false);
+				}
+				
+			}
+		});
 
 	}
 
