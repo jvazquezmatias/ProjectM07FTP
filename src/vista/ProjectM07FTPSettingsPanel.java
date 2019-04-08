@@ -107,18 +107,14 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
 				switch (click.getUserObject().toString()) {
 				case "Connection":
-
 					cardLayoutSettings.show(panel, "connection");
-
 					break;
 				case "FTP":
 					cardLayoutSettings.show(panel, "ftp");
-
 					break;
 
 				case "Active mode":
 					cardLayoutSettings.show(panel, "active-mode");
-
 					break;
 
 				}
