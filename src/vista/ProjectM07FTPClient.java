@@ -42,7 +42,6 @@ import java.awt.HeadlessException;
 import javax.swing.JEditorPane;
 import javax.swing.DefaultComboBoxModel;
 
-import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
@@ -79,6 +78,7 @@ public class ProjectM07FTPClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		dialogBeforeOpen();
 		addToolBar();
 
 		addFastConnection();
@@ -524,6 +524,14 @@ public class ProjectM07FTPClient extends JFrame {
 				JOptionPane.PLAIN_MESSAGE, null, op, op[0]);
 	}
 
+	public void dialogBeforeOpen() {
+
+		ProjectM07FTPDialogBeforeOpen panel = new ProjectM07FTPDialogBeforeOpen();
+
+		JOptionPane.showMessageDialog(this, panel, "Welcome", JOptionPane.PLAIN_MESSAGE);
+
+	}
+
 	class MyWindowAdapter extends WindowAdapter {
 
 		@Override
@@ -574,6 +582,7 @@ public class ProjectM07FTPClient extends JFrame {
 	public JButton getBtnConnect() {
 		return btnConnect;
 	}
+
 	public JMenuItem getMenuItemFile() {
 		return menuItemFile;
 	}
