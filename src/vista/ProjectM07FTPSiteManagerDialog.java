@@ -7,6 +7,9 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.ProjectM07FTPDadesConnexio;
+
 import javax.swing.JTabbedPane;
 import java.awt.Panel;
 import java.awt.event.WindowEvent;
@@ -38,12 +41,16 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 	private JTextField textFieldGeneralUser;
 	private JPasswordField passwordFieldGeneralPassword;
 	private ButtonGroup buttonGroupTabTranferSettings = new ButtonGroup();
-	
+
 	private JTextField textFieldAdvancedLocalDirectory;
 	private JTextField textFieldAdvancedRemoteDirectory;
 	private JTextField textFieldEncoding;
 	private final ButtonGroup buttonGroupTabCharset = new ButtonGroup();
 	private JTextField textFieldGeneralAccount;
+
+	private ProjectM07FTPDadesConnexio dadesConnexio;
+	private JButton btnSaveAndConnect;
+	private JTextField textFieldGeneralPort;
 
 	public ProjectM07FTPSiteManagerDialog() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,8 +61,12 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		contentPane.setLayout(null);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(12, 12, 717, 463);
+		tabbedPane.setBounds(12, 0, 717, 443);
 		contentPane.add(tabbedPane);
+		
+		btnSaveAndConnect = new JButton("Save and Connect");
+		btnSaveAndConnect.setBounds(548, 450, 157, 25);
+		contentPane.add(btnSaveAndConnect);
 
 		addTabGeneral();
 		addTabAdvanced();
@@ -65,6 +76,7 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 	}
 
 	private void addTabGeneral() {
+		dadesConnexio = new ProjectM07FTPDadesConnexio();
 		Panel generalPanel = new Panel();
 		tabbedPane.addTab("General", null, generalPanel, null);
 		generalPanel.setLayout(null);
@@ -92,7 +104,7 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		lblPort.setBounds(565, 41, 66, 15);
 		generalPanel.add(lblPort);
 
-		JTextField textFieldGeneralPort = new JTextField();
+		textFieldGeneralPort = new JTextField();
 		textFieldGeneralPort.setBounds(649, 37, 51, 24);
 		generalPanel.add(textFieldGeneralPort);
 		textFieldGeneralPort.setColumns(10);
@@ -102,8 +114,9 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		generalPanel.add(lblEncryption);
 
 		JComboBox comboBoxGeneralEncryption = new JComboBox();
-		comboBoxGeneralEncryption.setModel(new DefaultComboBoxModel(new String[] { "Use explicit FTP over TLS if available",
-				"Require explicit FTP over", "Require implicit FTP over", "Only use plain FTP (insecure)" }));
+		comboBoxGeneralEncryption
+				.setModel(new DefaultComboBoxModel(new String[] { "Use explicit FTP over TLS if available",
+						"Require explicit FTP over", "Require implicit FTP over", "Only use plain FTP (insecure)" }));
 		comboBoxGeneralEncryption.setBounds(150, 68, 550, 24);
 		generalPanel.add(comboBoxGeneralEncryption);
 
@@ -148,13 +161,13 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		generalPanel.add(lblComments);
 
 		JTextArea textAreaGeneralComments = new JTextArea();
-		textAreaGeneralComments.setBounds(12, 336, 688, 88);
+		textAreaGeneralComments.setBounds(12, 336, 688, 68);
 		generalPanel.add(textAreaGeneralComments);
 
 		JLabel lblAccount = new JLabel("Account:");
 		lblAccount.setBounds(12, 233, 85, 15);
 		generalPanel.add(lblAccount);
-		
+
 		textFieldGeneralAccount = new JTextField();
 		textFieldGeneralAccount.setColumns(10);
 		textFieldGeneralAccount.setBounds(150, 229, 550, 24);
@@ -258,8 +271,6 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 
 	private void addTabTransferSettings() {
 
-		
-		
 		Panel transferSettingsPanel = new Panel();
 		tabbedPane.addTab("Transfer Settings", null, transferSettingsPanel, null);
 		transferSettingsPanel.setLayout(null);
@@ -304,16 +315,16 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		spinner.setBounds(288, 91, 42, 20);
 		spinner.setEnabled(false);
 		transferSettingsPanel.add(spinner);
-		
+
 		chckbxNewCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				
-				if(chckbxNewCheckBox.isSelected()) {
+
+				if (chckbxNewCheckBox.isSelected()) {
 					spinner.setEnabled(true);
-				}else {
+				} else {
 					spinner.setEnabled(false);
 				}
-				
+
 			}
 		});
 
@@ -361,5 +372,31 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		textFieldEncoding.setBounds(107, 188, 69, 23);
 		charsetPanel.add(textFieldEncoding);
 		textFieldEncoding.setColumns(10);
+	}
+
+
+	public JButton getBtnSaveAndConnect() {
+		return btnSaveAndConnect;
+	}
+	public String getGeneralHost() {
+		return textFieldGeneralHost.getText();
+	}
+	public void setGeneralHost(String text) {
+		textFieldGeneralHost.setText(text);
+	}
+	public String getGeneralPort() {
+		return textFieldGeneralPort.getText();
+	}
+	public void setGeneralPort(String text_1) {
+		textFieldGeneralPort.setText(text_1);
+	}
+	public String getGeneralUser() {
+		return textFieldGeneralUser.getText();
+	}
+	public void setGeneralUser(String text_2) {
+		textFieldGeneralUser.setText(text_2);
+	}
+	public JPasswordField getPasswordFieldGeneralPassword() {
+		return passwordFieldGeneralPassword;
 	}
 }

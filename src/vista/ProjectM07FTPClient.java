@@ -3,7 +3,10 @@ package vista;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+
+import model.ProjectM07FTPDadesConnexio;
 
 import java.awt.AWTException;
 import java.awt.Dimension;
@@ -56,24 +59,14 @@ public class ProjectM07FTPClient extends JFrame {
 	static ProjectM07FTPClient frame;
 	private JTextField textFieldHost;
 	private JTextField textFieldUser;
-	private JTextField textFieldPassword;
+	private JPasswordField fieldPassword;
 	private JTextField textFieldPort;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new ProjectM07FTPClient();
-					frame.setVisible(true);
-					frame.setSize(700, 550);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton btnConnect;
+	private ProjectM07FTPDadesConnexio dadesConnexio;
+	private JMenuItem menuItemFile;
 
 	public ProjectM07FTPClient() {
+		dadesConnexio = new ProjectM07FTPDadesConnexio();
 		setBounds(new Rectangle(0, 0, 0, 0));
 		setLocation(new Point(200, 170));
 		addWindowListener(new MyWindowAdapter());
@@ -129,39 +122,39 @@ public class ProjectM07FTPClient extends JFrame {
 		lblPort.setBounds(459, 15, 36, 15);
 		panel.add(lblPort);
 
-		JButton btnConnect = new JButton("Connect");
+		btnConnect = new JButton("Connect");
 		btnConnect.setBounds(555, 10, 90, 25);
 		panel.add(btnConnect);
-		
+
 		JMenuBar menuBarFastConn = new JMenuBar();
 		menuBarFastConn.setBounds(650, 12, 20, 21);
 		panel.add(menuBarFastConn);
-		
+
 		JMenu menu = new JMenu("");
 		menu.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarFlecha.png")));
 		menuBarFastConn.add(menu);
-		
+
 		JMenuItem mntmCleanBar = new JMenuItem("Clean Bar");
 		menu.add(mntmCleanBar);
-		
+
 		JMenuItem mntmCleanHistory = new JMenuItem("Clean History");
 		menu.add(mntmCleanHistory);
-		
+
 		textFieldHost = new JTextField();
 		textFieldHost.setBounds(37, 13, 64, 19);
 		panel.add(textFieldHost);
 		textFieldHost.setColumns(10);
-		
+
 		textFieldUser = new JTextField();
 		textFieldUser.setBounds(187, 13, 90, 19);
 		panel.add(textFieldUser);
 		textFieldUser.setColumns(10);
-		
-		textFieldPassword = new JTextField();
-		textFieldPassword.setBounds(354, 13, 98, 19);
-		panel.add(textFieldPassword);
-		textFieldPassword.setColumns(10);
-		
+
+		fieldPassword = new JPasswordField();
+		fieldPassword.setBounds(354, 13, 98, 19);
+		panel.add(fieldPassword);
+		fieldPassword.setColumns(10);
+
 		textFieldPort = new JTextField();
 		textFieldPort.setBounds(496, 13, 47, 19);
 		panel.add(textFieldPort);
@@ -415,16 +408,16 @@ public class ProjectM07FTPClient extends JFrame {
 
 		menuBar.add(menuFile);
 
-		JMenuItem menuItemFile = new JMenuItem("Site Manager");
-		menuItemFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				ProjectM07FTPSiteManagerDialog siteManager = new ProjectM07FTPSiteManagerDialog();
-				siteManager.setModal(true);
-				siteManager.setVisible(true);
-
-			}
-		});
+		menuItemFile = new JMenuItem("Site Manager");
+//		menuItemFile.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//
+//				ProjectM07FTPSiteManagerDialog siteManager = new ProjectM07FTPSiteManagerDialog();
+//				siteManager.setModal(true);
+//				siteManager.setVisible(true);
+//
+//			}
+//		});
 		menuItemFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		menuFile.add(menuItemFile);
 
@@ -548,5 +541,40 @@ public class ProjectM07FTPClient extends JFrame {
 
 		}
 
+	}
+
+	public String getHostFastConn() {
+		return textFieldHost.getText();
+	}
+
+	public void setHostFastConn(String text) {
+		textFieldHost.setText(text);
+	}
+
+	public String getUserFastConn() {
+		return textFieldUser.getText();
+	}
+
+	public void setUserFastConn(String text_1) {
+		textFieldUser.setText(text_1);
+	}
+
+	public JPasswordField getFieldPasswordFastConn() {
+		return fieldPassword;
+	}
+
+	public String getPortTextFastConn() {
+		return textFieldPort.getText();
+	}
+
+	public void setPortTextFastConn(String text_2) {
+		textFieldPort.setText(text_2);
+	}
+
+	public JButton getBtnConnect() {
+		return btnConnect;
+	}
+	public JMenuItem getMenuItemFile() {
+		return menuItemFile;
 	}
 }
