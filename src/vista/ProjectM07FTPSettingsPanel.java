@@ -21,6 +21,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ProjectM07FTPSettingsPanel extends JPanel {
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
@@ -40,6 +42,25 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 	
 
 		JTree tree = new JTree();
+		tree.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				switch(click.getUserObject().toString()) {
+				case "Connection":
+					
+					break;
+				case "FTP":
+					
+					break;
+					
+				case "Active mode":
+					
+					break;
+					
+				}
+			}
+		});
 		tree.setRootVisible(false);
 		tree.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tree.setModel(new DefaultTreeModel(new DefaultMutableTreeNode("Settings") {
