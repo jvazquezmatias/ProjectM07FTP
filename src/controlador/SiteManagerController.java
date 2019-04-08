@@ -86,7 +86,6 @@ public class SiteManagerController {
 				System.out.println(file.getName());
 			}
 		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
