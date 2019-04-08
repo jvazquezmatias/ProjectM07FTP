@@ -27,6 +27,7 @@ import java.awt.event.MouseEvent;
 
 public class ProjectM07FTPSettingsPanel extends JPanel {
 	JPanel panel;
+
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
 		setPreferredSize(new Dimension(750, 500));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -41,10 +42,9 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		panelMain.add(lblNewLabel);
 
 		Icon leafIcon = new ImageIcon(ProjectM07FTPClient.class.getResource(""));
-	
 
 		JTree tree = new JTree();
-		
+
 		tree.setRootVisible(false);
 		tree.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tree.setModel(new DefaultTreeModel(new DefaultMutableTreeNode("Settings") {
@@ -82,7 +82,7 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		}));
 		DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) tree.getCellRenderer();
 		renderer.setLeafIcon(leafIcon);
-		
+
 		tree.setBounds(12, 27, 243, 344);
 		panelMain.add(tree);
 
@@ -90,50 +90,47 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		panel.setBounds(267, 12, 461, 466);
 		CardLayout vazJavCL = new CardLayout(0, 0);
 		panel.setLayout(vazJavCL);
-		
+
 		JPanel connectionPanel = new JPanel();
-		
+
 		panel.add(connectionPanel, "connection");
-		
+
 		JPanel ftpPanel = new JPanel();
 		panel.add(ftpPanel, "ftp");
-		
+
 		JPanel activemodePanel = new JPanel();
 		panel.add(activemodePanel, "ftp");
-		
+
 		tree.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-				switch(click.getUserObject().toString()) {
+				switch (click.getUserObject().toString()) {
 				case "Connection":
 
-					vazJavCL.show(panel,"connection");
+					vazJavCL.show(panel, "connection");
 
-					
 					break;
 				case "FTP":
-					vazJavCL.show(panel,"ftp");
+					vazJavCL.show(panel, "ftp");
 
 					break;
-					
+
 				case "Active mode":
-					vazJavCL.show(panel,"active-mode");
+					vazJavCL.show(panel, "active-mode");
 
 					break;
-					
+
 				}
 			}
 		});
-		
-		
-		
+
 		panelMain.add(panel);
-		
+
 		JButton btnNewButton = new JButton("Accept");
 		btnNewButton.setBounds(12, 383, 243, 25);
 		panelMain.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.setBounds(12, 420, 243, 25);
 		panelMain.add(btnNewButton_1);
