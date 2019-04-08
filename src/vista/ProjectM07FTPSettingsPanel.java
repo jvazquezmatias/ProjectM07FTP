@@ -88,8 +88,8 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 
 		panel = new JPanel();
 		panel.setBounds(267, 12, 461, 466);
-		CardLayout vazJavCL = new CardLayout(0, 0);
-		panel.setLayout(vazJavCL);
+		CardLayout cardLayoutSettings = new CardLayout(0, 0);
+		panel.setLayout(cardLayoutSettings);
 
 		JPanel connectionPanel = new JPanel();
 
@@ -108,16 +108,16 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 				switch (click.getUserObject().toString()) {
 				case "Connection":
 
-					vazJavCL.show(panel, "connection");
+					cardLayoutSettings.show(panel, "connection");
 
 					break;
 				case "FTP":
-					vazJavCL.show(panel, "ftp");
+					cardLayoutSettings.show(panel, "ftp");
 
 					break;
 
 				case "Active mode":
-					vazJavCL.show(panel, "active-mode");
+					cardLayoutSettings.show(panel, "active-mode");
 
 					break;
 
