@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.AWTException;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ItemListener;
@@ -25,6 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ProjectM07FTPSettingsPanel extends JPanel {
+	JPanel panel;
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
 		setPreferredSize(new Dimension(750, 500));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -42,25 +44,7 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 	
 
 		JTree tree = new JTree();
-		tree.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-				switch(click.getUserObject().toString()) {
-				case "Connection":
-					
-					break;
-				case "FTP":
-					
-					break;
-					
-				case "Active mode":
-					
-					break;
-					
-				}
-			}
-		});
+		
 		tree.setRootVisible(false);
 		tree.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tree.setModel(new DefaultTreeModel(new DefaultMutableTreeNode("Settings") {
@@ -102,8 +86,48 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		tree.setBounds(12, 27, 243, 344);
 		panelMain.add(tree);
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(267, 12, 461, 466);
+		CardLayout vazJavCL = new CardLayout(0, 0);
+		panel.setLayout(vazJavCL);
+		
+		JPanel connectionPanel = new JPanel();
+		
+		panel.add(connectionPanel, "connection");
+		
+		JPanel ftpPanel = new JPanel();
+		panel.add(ftpPanel, "ftp");
+		
+		JPanel activemodePanel = new JPanel();
+		panel.add(activemodePanel, "ftp");
+		
+		tree.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				switch(click.getUserObject().toString()) {
+				case "Connection":
+
+					vazJavCL.show(panel,"connection");
+
+					
+					break;
+				case "FTP":
+					vazJavCL.show(panel,"ftp");
+
+					break;
+					
+				case "Active mode":
+					vazJavCL.show(panel,"active-mode");
+
+					break;
+					
+				}
+			}
+		});
+		
+		
+		
 		panelMain.add(panel);
 		
 		JButton btnNewButton = new JButton("Accept");
