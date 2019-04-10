@@ -63,6 +63,8 @@ public class ProjectM07FTPClient extends JFrame {
 	private JButton btnConnect;
 	private ProjectM07FTPDadesConnexio dadesConnexio;
 	private JMenuItem menuItemFile;
+	private JMenu mnH;
+	private JButton btnToolBarSiteManager;
 
 	public ProjectM07FTPClient() {
 		dadesConnexio = new ProjectM07FTPDadesConnexio();
@@ -172,7 +174,7 @@ public class ProjectM07FTPClient extends JFrame {
 		toolBar.setFloatable(false);
 		contentPane.add(toolBar);
 
-		JButton btnToolBarSiteManager = new JButton("");
+		btnToolBarSiteManager = new JButton("");
 		btnToolBarSiteManager.setFocusable(false);
 		btnToolBarSiteManager.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnToolBarSiteManager.setOpaque(false);
@@ -188,17 +190,13 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBar_1.setBorder(new EmptyBorder(0, 0, 0, 0));
 		toolBar.add(menuBar_1);
 
-		JMenu mnH = new JMenu("");
+		mnH = new JMenu("");
 		mnH.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconToolBarFlecha.png")));
 		menuBar_1.add(mnH);
 		mnH.setFocusable(false);
 		mnH.setBorder(new EmptyBorder(0, 0, 0, 0));
 		mnH.setMaximumSize(new Dimension(20, 32767));
 		mnH.setPreferredSize(new Dimension(25, 27));
-
-		JLabel lblNoSitesAvailable = new JLabel("No sites available");
-		lblNoSitesAvailable.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		mnH.add(lblNoSitesAvailable);
 
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -585,5 +583,11 @@ public class ProjectM07FTPClient extends JFrame {
 
 	public JMenuItem getMenuItemFile() {
 		return menuItemFile;
+	}
+	public JMenu getMenuSiteManagerToolBar() {
+		return mnH;
+	}
+	public JButton getBtnToolBarSiteManager() {
+		return btnToolBarSiteManager;
 	}
 }
