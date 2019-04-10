@@ -6,13 +6,10 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
-
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-
 import model.ProjectM07FTPDadesConnexio;
 import vista.ProjectM07FTPClient;
 import vista.ProjectM07FTPSiteManagerDialog;
@@ -136,6 +133,20 @@ public class SiteManagerController {
 					JOptionPane.ERROR_MESSAGE);
 		}
 
+	}
+
+	public FTPFile[] directoriesServer() {
+		FTPClient ftpClient = new FTPClient();
+
+		try {
+			ftpClient.connect(dadesConnexio.getHost(), dadesConnexio.getPort());
+			ftpClient.login(dadesConnexio.getUser(), dadesConnexio.getPassword());
+			return ftpClient.listDirectories();
+		} catch (NumberFormatException | IOException e) {
+			JOptionPane.showMessageDialog(siteManager, "could not connect to server.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		return null;
 	}
 
 }
