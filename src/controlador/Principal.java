@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import model.ProjectM07FTPDadesConnexio;
 import vista.ProjectM07FTPClient;
+import vista.ProjectM07FTPDialogBeforeOpen;
 import vista.ProjectM07FTPSiteManagerDialog;
 
 public class Principal {
@@ -12,11 +13,17 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		
+		
 		ProjectM07FTPSiteManagerDialog siteManager = new ProjectM07FTPSiteManagerDialog();
 		ProjectM07FTPClient frame = new ProjectM07FTPClient();
 		ProjectM07FTPDadesConnexio dadesConnexio = new ProjectM07FTPDadesConnexio();		
 		SiteManagerController siteManagerController = new SiteManagerController(dadesConnexio,frame,siteManager);
-		
+		new ExplorarController(frame);
+		new FaqsController(frame);
+		new ReportABugController(frame);
+		new AddBookmarksController(frame);
+		WelcomeController welcomeController = new WelcomeController(frame ); 
+		welcomeController.openWelcomeDialog();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

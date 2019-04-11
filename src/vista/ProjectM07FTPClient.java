@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -11,7 +10,6 @@ import model.ProjectM07FTPDadesConnexio;
 import java.awt.AWTException;
 import java.awt.Dimension;
 import java.awt.Event;
-import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.Window;
 
@@ -34,19 +32,13 @@ import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.HeadlessException;
 
-import javax.swing.JEditorPane;
-import javax.swing.DefaultComboBoxModel;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButton;
 import java.awt.Rectangle;
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
 
 public class ProjectM07FTPClient extends JFrame {
@@ -63,8 +55,16 @@ public class ProjectM07FTPClient extends JFrame {
 	private JButton btnConnect;
 	private ProjectM07FTPDadesConnexio dadesConnexio;
 	private JMenuItem menuItemFile;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/pablosanchez1999/ProjectM07FTP
 	private JMenu mnH;
 	private JButton btnToolBarSiteManager;
+=======
+	private JMenuItem mntmOpenWelcomeDialog;
+	private JMenuItem menuItemExport;
+	private JMenuItem menuItemFaqs;
+	private JMenuItem menuItemReportBug;
+	private JMenuItem menuItemAddBookmark;
+>>>>>>> 2a5a00e add dialogs i controllers
 
 	public ProjectM07FTPClient() {
 		dadesConnexio = new ProjectM07FTPDadesConnexio();
@@ -80,7 +80,6 @@ public class ProjectM07FTPClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		dialogBeforeOpen();
 		addToolBar();
 
 		addFastConnection();
@@ -239,7 +238,7 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 
 	private void menuTransfer() {
-		JMenu menuTransfer = new JMenu("Transferr");
+		JMenu menuTransfer = new JMenu("Transfer");
 		menuBar.add(menuTransfer);
 		JMenuItem menuItemProcessQueue = new JMenuItem("Process Queue");
 		menuItemProcessQueue.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
@@ -384,7 +383,7 @@ public class ProjectM07FTPClient extends JFrame {
 		menuBookmarks.setMnemonic('B');
 		menuBar.add(menuBookmarks);
 
-		JMenuItem menuItemAddBookmark = new JMenuItem("Add bookmark...");
+		menuItemAddBookmark = new JMenuItem("Add bookmark...");
 		menuItemAddBookmark.setIcon(
 				new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarBookmark.png")));
 		menuItemAddBookmark.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK));
@@ -438,14 +437,7 @@ public class ProjectM07FTPClient extends JFrame {
 				.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarImport.png")));
 		menuFile.add(menuItemImport);
 
-		JMenuItem menuItemExport = new JMenuItem("Export");
-		menuItemExport.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				menuBarExportDialog();
-
-			}
-		});
+		menuItemExport = new JMenuItem("Export");
 		menuItemExport
 				.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarExport.png")));
 
@@ -476,16 +468,19 @@ public class ProjectM07FTPClient extends JFrame {
 		menuItemCheckupdates.setMnemonic('u');
 		menuHelp.add(menuItemCheckupdates);
 
+		mntmOpenWelcomeDialog = new JMenuItem("Open welcome dialog");
+		menuHelp.add(mntmOpenWelcomeDialog);
+
 		JSeparator separator_2 = new JSeparator();
 		menuHelp.add(separator_2);
 
-		JMenuItem menuItemFaqs = new JMenuItem("Faqs...");
+		menuItemFaqs = new JMenuItem("Faqs...");
 		menuItemFaqs
 				.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarFaq.png")));
 		menuItemFaqs.setMnemonic('F');
 		menuHelp.add(menuItemFaqs);
 
-		JMenuItem menuItemReportBug = new JMenuItem("Report a bug...");
+		menuItemReportBug = new JMenuItem("Report a bug...");
 		menuItemReportBug.setMnemonic('R');
 		menuItemReportBug.setSelected(true);
 		menuHelp.add(menuItemReportBug);
@@ -499,35 +494,6 @@ public class ProjectM07FTPClient extends JFrame {
 				.setIcon(new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarAbout.png")));
 		menuItemAbout.setMnemonic('A');
 		menuHelp.add(menuItemAbout);
-	}
-
-	public void menuBarExportDialog() {
-
-		ArrayList<JCheckBox> options = new ArrayList<JCheckBox>();
-
-		JCheckBox cdbtnSiteManager = new JCheckBox("Export Site Manager entries");
-		JCheckBox cdbtnSettings = new JCheckBox("Export Settings");
-		JCheckBox cdbtnQueue = new JCheckBox("Export Queue");
-		JCheckBox cdbtnFilters = new JCheckBox("Export Filters");
-		options.add(cdbtnSiteManager);
-		options.add(cdbtnSettings);
-		options.add(cdbtnQueue);
-		options.add(cdbtnFilters);
-
-		Object[] obj = (Object[]) options.toArray(new Object[options.size()]);
-
-		String op[] = { "Accept", "Cancel" };
-
-		JOptionPane.showOptionDialog(null, obj, "Export configuration", JOptionPane.YES_NO_OPTION,
-				JOptionPane.PLAIN_MESSAGE, null, op, op[0]);
-	}
-
-	public void dialogBeforeOpen() {
-
-		ProjectM07FTPDialogBeforeOpen panel = new ProjectM07FTPDialogBeforeOpen();
-
-		JOptionPane.showMessageDialog(this, panel, "Welcome", JOptionPane.PLAIN_MESSAGE);
-
 	}
 
 	class MyWindowAdapter extends WindowAdapter {
@@ -584,10 +550,29 @@ public class ProjectM07FTPClient extends JFrame {
 	public JMenuItem getMenuItemFile() {
 		return menuItemFile;
 	}
+<<<<<<< Upstream, based on branch 'master' of https://github.com/pablosanchez1999/ProjectM07FTP
 	public JMenu getMenuSiteManagerToolBar() {
 		return mnH;
 	}
 	public JButton getBtnToolBarSiteManager() {
 		return btnToolBarSiteManager;
+=======
+
+	public JMenuItem getMntmOpenWelcomeDialog() {
+		return mntmOpenWelcomeDialog;
+	}
+
+	public JMenuItem getMenuItemExport() {
+		return menuItemExport;
+	}
+	public JMenuItem getMenuItemFaqs() {
+		return menuItemFaqs;
+	}
+	public JMenuItem getMenuItemReportBug() {
+		return menuItemReportBug;
+	}
+	public JMenuItem getMenuItemAddBookmark() {
+		return menuItemAddBookmark;
+>>>>>>> 2a5a00e add dialogs i controllers
 	}
 }
