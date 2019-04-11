@@ -11,6 +11,7 @@ public class ProjectM07FTPSettingsDialog extends JDialog{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private ProjectM07FTPSettingsPanel dialogContent;
 	/**
 	 * Launch the application.
 	 */
@@ -25,7 +26,10 @@ public class ProjectM07FTPSettingsDialog extends JDialog{
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setTitle("Settings");
 		setBounds(100, 100, 750, 500);
-		ProjectM07FTPSettingsPanel dialogContent = new ProjectM07FTPSettingsPanel();
+		dialogContent = new ProjectM07FTPSettingsPanel();
 		setContentPane(dialogContent);
+	}
+	public ProjectM07FTPSettingsPanel getDialogContent() {
+		return dialogContent;
 	}
 }

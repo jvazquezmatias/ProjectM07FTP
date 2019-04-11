@@ -26,9 +26,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class ProjectM07FTPSettingsPanel extends JPanel {
 	JPanel panel;
+	private JTree tree;
+	CardLayout cardLayoutSettings;
+	private JTextField textField;
 
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
 		setPreferredSize(new Dimension(750, 500));
@@ -45,7 +52,7 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 
 		Icon leafIcon = new ImageIcon(ProjectM07FTPClient.class.getResource(""));
 
-		JTree tree = new JTree();
+		tree = new JTree();
 
 		tree.setRootVisible(false);
 		tree.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -90,12 +97,59 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 
 		panel = new JPanel();
 		panel.setBounds(267, 12, 461, 466);
-		CardLayout cardLayoutSettings = new CardLayout(0, 0);
+		cardLayoutSettings = new CardLayout(0, 0);
 		panel.setLayout(cardLayoutSettings);
-
 		JPanel connectionPanel = new JPanel();
-
 		panel.add(connectionPanel, "connection");
+		connectionPanel.setLayout(null);
+
+		JPanel debugPanel = new JPanel();
+
+		panel.add(debugPanel, "debug");
+		debugPanel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Debugging settings");
+		lblNewLabel_1.setBounds(12, 31, 153, 15);
+		debugPanel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("Debug information in message log:");
+		lblNewLabel_3.setBounds(12, 79, 256, 15);
+		debugPanel.add(lblNewLabel_3);
+		
+		JButton btnNewButton_2 = new JButton("Run configuration wizard now...");
+		btnNewButton_2.setBounds(12, 101, 271, 25);
+		debugPanel.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_4 = new JLabel("Timeout");
+		lblNewLabel_4.setBounds(12, 150, 66, 15);
+		debugPanel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Timeout in seconds:");
+		lblNewLabel_5.setBounds(12, 177, 153, 15);
+		debugPanel.add(lblNewLabel_5);
+		
+		textField = new JTextField();
+		textField.setText("20");
+		textField.setBounds(159, 175, 34, 19);
+		debugPanel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("(10-9999, 0 to disable)");
+		lblNewLabel_6.setBounds(197, 177, 170, 15);
+		debugPanel.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("New label");
+		lblNewLabel_7.setBounds(12, 204, 66, 15);
+		debugPanel.add(lblNewLabel_7);
+		
+		JCheckBox chckbxShowDebugMenu = new JCheckBox("Show debug menu");
+		chckbxShowDebugMenu.setBounds(22, 48, 185, 23);
+		debugPanel.add(chckbxShowDebugMenu);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"0 - None", "1 - Warning", "2 - Info", "3 - Verbose", "4 - Debug"}));
+		comboBox.setBounds(273, 79, 114, 19);
+		debugPanel.add(comboBox);
 
 		JPanel ftpPanel = new JPanel();
 		panel.add(ftpPanel, "ftp");
@@ -103,25 +157,25 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		JPanel activemodePanel = new JPanel();
 		panel.add(activemodePanel, "ftp");
 
-		tree.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-				switch (click.getUserObject().toString()) {
-				case "Connection":
-					cardLayoutSettings.show(panel, "connection");
-					break;
-				case "FTP":
-					cardLayoutSettings.show(panel, "ftp");
-					break;
-
-				case "Active mode":
-					cardLayoutSettings.show(panel, "active-mode");
-					break;
-
-				}
-			}
-		});
+//		tree.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+//				switch (click.getUserObject().toString()) {
+//				case "Connection":
+//					cardLayoutSettings.show(panel, "connection");
+//					break;
+//				case "FTP":
+//					cardLayoutSettings.show(panel, "ftp");
+//					break;
+//
+//				case "Active mode":
+//					cardLayoutSettings.show(panel, "active-mode");
+//					break;
+//
+//				}
+//			}
+//		});
 
 		panelMain.add(panel);
 
@@ -132,5 +186,24 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.setBounds(12, 420, 243, 25);
 		panelMain.add(btnNewButton_1);
+	}
+	public JTree getTree() {
+		return tree;
+	}
+	
+	public void seleccionarScreen(MouseEvent e) {
+		DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+		switch (click.getUserObject().toString()) {
+		case "Connection":
+			cardLayoutSettings.show(panel, "connection");
+			break;
+		case "FTP":
+			cardLayoutSettings.show(panel, "ftp");
+			break;
+		case "Active mode":
+			cardLayoutSettings.show(panel, "active-mode");
+			break;
+
+		}
 	}
 }
