@@ -7,9 +7,10 @@ import java.net.URISyntaxException;
 
 import model.ProjectM07FTPDadesConnexio;
 import vista.ProjectM07FTPClient;
-import vista.ProjectM07FTPDialogBeforeOpen;
 import vista.ProjectM07FTPSettingsDialog;
 import vista.ProjectM07FTPSiteManagerDialog;
+
+
 
 public class Principal {
 
