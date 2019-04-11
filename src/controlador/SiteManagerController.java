@@ -56,8 +56,7 @@ public class SiteManagerController {
 
 	public void buttonConnectionToolBar() {
 		JMenuItem menuItem = new JMenuItem(dadesConnexio.getHost() + " - " + dadesConnexio.getUser());
-		menuItem.addActionListener(e -> connectToServer(dadesConnexio.getHost(),
-				String.valueOf(dadesConnexio.getPort()), dadesConnexio.getUser(), dadesConnexio.getPassword()));
+		menuItem.addActionListener(e -> directoriesServer());
 		clientFtp.getMenuSiteManagerToolBar().add(menuItem);
 
 	}
@@ -137,16 +136,20 @@ public class SiteManagerController {
 
 	public FTPFile[] directoriesServer() {
 		FTPClient ftpClient = new FTPClient();
+		FTPFile[] files = new FTPFile[0];
 
 		try {
 			ftpClient.connect(dadesConnexio.getHost(), dadesConnexio.getPort());
 			ftpClient.login(dadesConnexio.getUser(), dadesConnexio.getPassword());
-			return ftpClient.listDirectories();
+			files = ftpClient.listDirectories();
+			for (int i = 0; i < files.length; i++) {
+				System.out.println(files[i].getName());
+			}
 		} catch (NumberFormatException | IOException e) {
 			JOptionPane.showMessageDialog(siteManager, "Could not connect to server.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
-		return null;
+		return files;
 	}
 
 }
