@@ -55,16 +55,14 @@ public class ProjectM07FTPClient extends JFrame {
 	private JButton btnConnect;
 	private ProjectM07FTPDadesConnexio dadesConnexio;
 	private JMenuItem menuItemFile;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/pablosanchez1999/ProjectM07FTP
 	private JMenu mnH;
 	private JButton btnToolBarSiteManager;
-=======
 	private JMenuItem mntmOpenWelcomeDialog;
 	private JMenuItem menuItemExport;
 	private JMenuItem menuItemFaqs;
 	private JMenuItem menuItemReportBug;
 	private JMenuItem menuItemAddBookmark;
->>>>>>> 2a5a00e add dialogs i controllers
+	private JMenuItem menuItemSettings;
 
 	public ProjectM07FTPClient() {
 		dadesConnexio = new ProjectM07FTPDadesConnexio();
@@ -280,28 +278,14 @@ public class ProjectM07FTPClient extends JFrame {
 		JSeparator separator = new JSeparator();
 		menuEdit.add(separator);
 
-		JMenuItem menuItemSettigs = new JMenuItem("Settings...");
-		menuItemSettigs.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		menuItemSettings = new JMenuItem("Settings...");
 
-				ProjectM07FTPSettingsDialog dialog;
-				try {
-					dialog = new ProjectM07FTPSettingsDialog();
-					dialog.setModal(true);
-					dialog.setVisible(true);
-				} catch (HeadlessException | URISyntaxException | AWTException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-		});
-		menuItemSettigs.setIcon(
+		menuItemSettings.setIcon(
 				new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarSettings.png")));
 
-		menuItemSettigs.setIcon(
+		menuItemSettings.setIcon(
 				new ImageIcon(ProjectM07FTPClient.class.getResource("/activities/img/IconMenuBarSettings.png")));
-		menuEdit.add(menuItemSettigs);
+		menuEdit.add(menuItemSettings);
 
 	}
 
@@ -550,14 +534,12 @@ public class ProjectM07FTPClient extends JFrame {
 	public JMenuItem getMenuItemFile() {
 		return menuItemFile;
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/pablosanchez1999/ProjectM07FTP
 	public JMenu getMenuSiteManagerToolBar() {
 		return mnH;
 	}
 	public JButton getBtnToolBarSiteManager() {
 		return btnToolBarSiteManager;
-=======
-
+	}
 	public JMenuItem getMntmOpenWelcomeDialog() {
 		return mntmOpenWelcomeDialog;
 	}
@@ -573,6 +555,8 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 	public JMenuItem getMenuItemAddBookmark() {
 		return menuItemAddBookmark;
->>>>>>> 2a5a00e add dialogs i controllers
+	}
+	public JMenuItem getMenuItemSettings() {
+		return menuItemSettings;
 	}
 }

@@ -24,6 +24,8 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class ProjectM07FTPSettingsPanel extends JPanel {
 	JPanel panel;

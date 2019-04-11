@@ -14,15 +14,6 @@ public class ProjectM07FTPSettingsDialog extends JDialog{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			ProjectM07FTPSettingsDialog dialog = new ProjectM07FTPSettingsDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
@@ -31,6 +22,7 @@ public class ProjectM07FTPSettingsDialog extends JDialog{
 	 * @throws HeadlessException 
 	 */
 	public ProjectM07FTPSettingsDialog() throws HeadlessException, URISyntaxException, AWTException {
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setTitle("Settings");
 		setBounds(100, 100, 750, 500);
 		ProjectM07FTPSettingsPanel dialogContent = new ProjectM07FTPSettingsPanel();

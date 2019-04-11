@@ -1,17 +1,21 @@
 package controlador;
 
+import java.awt.AWTException;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
+import java.net.URISyntaxException;
 
 import model.ProjectM07FTPDadesConnexio;
 import vista.ProjectM07FTPClient;
 import vista.ProjectM07FTPDialogBeforeOpen;
+import vista.ProjectM07FTPSettingsDialog;
 import vista.ProjectM07FTPSiteManagerDialog;
 
 public class Principal {
 
 	 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws HeadlessException, URISyntaxException, AWTException {
 		
 		
 		ProjectM07FTPSiteManagerDialog siteManager = new ProjectM07FTPSiteManagerDialog();
@@ -24,6 +28,9 @@ public class Principal {
 		new AddBookmarksController(frame);
 		WelcomeController welcomeController = new WelcomeController(frame ); 
 		welcomeController.openWelcomeDialog();
+		ProjectM07FTPSettingsDialog settings = new ProjectM07FTPSettingsDialog();
+		SettingsController settingsController = new SettingsController(settings,frame);
+
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
