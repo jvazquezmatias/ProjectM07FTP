@@ -102,7 +102,7 @@ public class SiteManagerController {
 			properties.put("User", dadesConnexio.getUser());
 			properties.put("Password", dadesConnexio.getPassword());
 			try {
-				properties.store(new FileOutputStream("dadesConnexio.txt", true), null);
+				properties.store(new FileOutputStream("dadesConnexio.txt"), null);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
