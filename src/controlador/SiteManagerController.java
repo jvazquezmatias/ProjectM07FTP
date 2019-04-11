@@ -83,7 +83,7 @@ public class SiteManagerController {
 			connectToServer(dadesConnexio.getHost(), String.valueOf(dadesConnexio.getPort()), dadesConnexio.getUser(),
 					dadesConnexio.getPassword());
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(siteManager, "the port field has to be a number.", "Error",
+			JOptionPane.showMessageDialog(siteManager, "The port field has to be a number.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -111,7 +111,7 @@ public class SiteManagerController {
 					dadesConnexio.getPassword());
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(siteManager, "the port field has to be a number.", "Error",
+			JOptionPane.showMessageDialog(siteManager, "The port field has to be a number.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -129,7 +129,7 @@ public class SiteManagerController {
 			}
 			siteManager.dispose();
 		} catch (NumberFormatException | IOException e) {
-			JOptionPane.showMessageDialog(siteManager, "could not connect to server.", "Error",
+			JOptionPane.showMessageDialog(siteManager, "Could not connect to server.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -143,7 +143,7 @@ public class SiteManagerController {
 			ftpClient.login(dadesConnexio.getUser(), dadesConnexio.getPassword());
 			return ftpClient.listDirectories();
 		} catch (NumberFormatException | IOException e) {
-			JOptionPane.showMessageDialog(siteManager, "could not connect to server.", "Error",
+			JOptionPane.showMessageDialog(siteManager, "Could not connect to server.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
