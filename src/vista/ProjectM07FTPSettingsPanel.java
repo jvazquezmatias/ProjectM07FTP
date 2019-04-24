@@ -42,6 +42,8 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
 		setPreferredSize(new Dimension(750, 500));
@@ -478,6 +480,49 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 
 		panel.add(passwordsPanel, "passwords");
 		passwordsPanel.setLayout(null);
+		
+		JLabel lblPasswords = new JLabel("Passwords");
+		lblPasswords.setBounds(12, 23, 153, 15);
+		passwordsPanel.add(lblPasswords);
+		
+		JRadioButton rdbtnSavePasswords = new JRadioButton("Save passwords");
+		rdbtnSavePasswords.setSelected(true);
+		rdbtnSavePasswords.setBounds(23, 46, 144, 23);
+		passwordsPanel.add(rdbtnSavePasswords);
+		
+		JRadioButton rdbtnDoNotSave = new JRadioButton("Do not save passwords");
+		rdbtnDoNotSave.setBounds(23, 72, 278, 23);
+		passwordsPanel.add(rdbtnDoNotSave);
+		
+		JRadioButton rdbtnSavePasswordsProtected = new JRadioButton("Save passwords protected by a master password");
+		rdbtnSavePasswordsProtected.setBounds(22, 99, 374, 23);
+		passwordsPanel.add(rdbtnSavePasswordsProtected);
+		
+		JLabel lblMasterPassword = new JLabel("Master password:");
+		lblMasterPassword.setBounds(43, 130, 153, 15);
+		passwordsPanel.add(lblMasterPassword);
+		
+		JLabel lblRepeatPassword = new JLabel("Repeat password:");
+		lblRepeatPassword.setBounds(43, 157, 153, 15);
+		passwordsPanel.add(lblRepeatPassword);
+		
+		JLabel lblALostMaster = new JLabel("A lost master password cannot be recovered! Please");
+		lblALostMaster.setBounds(43, 185, 406, 15);
+		passwordsPanel.add(lblALostMaster);
+		
+		JLabel lblThoroughlyMemorizeYour = new JLabel("thoroughly memorize your password.");
+		lblThoroughlyMemorizeYour.setBounds(43, 200, 406, 15);
+		passwordsPanel.add(lblThoroughlyMemorizeYour);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(169, 128, 255, 19);
+		passwordsPanel.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(169, 155, 255, 19);
+		passwordsPanel.add(textField_4);
 		
 		JPanel ftpPanel = new JPanel();
 		panel.add(ftpPanel, "ftp");
