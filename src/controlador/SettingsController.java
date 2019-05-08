@@ -43,8 +43,9 @@ public class SettingsController {
       }
 
 	private void abrirSettings() {
-		settings.setModal(true);
+		//settings.setModal(true);
 		settings.setVisible(true);
+		settings.setResizable(false);
+		settings.pack();
 	}
-
 }

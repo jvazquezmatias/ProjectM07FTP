@@ -2,13 +2,17 @@ package vista;
 
 import java.awt.AWTException;
 import java.awt.CardLayout;
+import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Insets;
+import java.awt.Panel;
 import java.awt.Window;
 import java.awt.event.ItemListener;
 import java.net.URISyntaxException;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -16,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
@@ -23,6 +28,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Component;
@@ -37,12 +44,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
 
-public class ProjectM07FTPSettingsPanel extends JPanel {
+public class ProjectM07FTPSettingsPanel extends JPanel implements ItemListener {
 	JPanel panel;
 	private JTree tree;
 	CardLayout cardLayoutSettings;
@@ -52,6 +62,26 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JButton btnNewButton_2;
+	
+	private JTextField textFieldTimeout;
+	private JPanel connectionPanel;
+	private JTextField textFieldReconnection1;
+	private JPanel ftpPanel;
+	private JPanel activemodePanel;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textFieldActivemodePanel1;
+	private JTextField textFieldActivemodePanel2;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JRadioButton rdbtnActiveIP1;
+	private JTextField txtHttpipfilezillaprojectorgipphp;
+	private Checkbox checkboxActiveIP;
+	private JTextField textFieldActiveIP1;
+	private JRadioButton rdbtnActiveIP2;
+	private JRadioButton rdbtnActiveIP3;
+	private Panel passivemodePanel;
+	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	private JPanel sftpPanel;
+	private JTable table;
 
 	public ProjectM07FTPSettingsPanel() throws URISyntaxException, HeadlessException, AWTException {
 		setPreferredSize(new Dimension(750, 500));
@@ -79,7 +109,7 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 				node_1 = new DefaultMutableTreeNode("Connection");
 				node_2 = new DefaultMutableTreeNode("FTP");
 				node_2.add(new DefaultMutableTreeNode("Active mode"));
-				node_2.add(new DefaultMutableTreeNode("Passive mode\t\t"));
+				node_2.add(new DefaultMutableTreeNode("Passive mode"));
 				node_2.add(new DefaultMutableTreeNode("FTP Proxy"));
 				node_1.add(node_2);
 				node_1.add(new DefaultMutableTreeNode("SFTP"));
@@ -115,12 +145,39 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		panel.setBounds(267, 12, 461, 466);
 		cardLayoutSettings = new CardLayout(0, 0);
 		panel.setLayout(cardLayoutSettings);
-		JPanel connectionPanel = new JPanel();
+		
+		
+		// connectionPanel
+		connectionPanel = new JPanel();
 		panel.add(connectionPanel, "connection");
 		connectionPanel.setLayout(null);
-
+		connectionPanel();
+		
+		// ftpPanel
+		ftpPanel = new JPanel();
+		panel.add(ftpPanel, "ftp-panel");
+		ftpPanel.setLayout(null);
+		ftpPanel();
+		
+		// Active mode
+		activemodePanel = new JPanel();
+		panel.add(activemodePanel, "active-mode");
+		activemodePanel.setLayout(null);
+		activePanel();
+		
+		// passive mode
+		passivemodePanel = new Panel();
+		panel.add(passivemodePanel, "passive-mode");
+		passivemodePanel.setLayout(null);
+		passivePanel();
+		
+		// SFTP
+		sftpPanel = new JPanel();
+		panel.add(sftpPanel, "sftp");
+		sftpPanel.setLayout(null);
+		sftpPanel();
+		
 		JPanel debugPanel = new JPanel();
-
 		panel.add(debugPanel, "debug");
 		debugPanel.setLayout(null);
 
@@ -602,6 +659,350 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 		return textField;
 	}
 
+	
+	//Methods panels
+	private void ftpPanel() {
+
+		// Transfer
+		JPanel ftpPanelTransfer = new JPanel();
+		ftpPanelTransfer.setBounds(0, 0, 632, 153);
+		ftpPanelTransfer.setBorder(BorderFactory.createTitledBorder("Transfer Mode"));
+		ftpPanelTransfer.setLayout(null);
+
+		JRadioButton rdbtnTransferPassive = new JRadioButton("Passive (recommended)");
+		rdbtnTransferPassive.setSelected(true);
+		buttonGroup.add(rdbtnTransferPassive);
+		rdbtnTransferPassive.setBounds(8, 20, 193, 23);
+		ftpPanelTransfer.add(rdbtnTransferPassive);
+
+		JRadioButton rdbtnTransferActive = new JRadioButton("Active");
+		buttonGroup.add(rdbtnTransferActive);
+		rdbtnTransferActive.setBounds(8, 50, 144, 23);
+		ftpPanelTransfer.add(rdbtnTransferActive);
+
+		JCheckBox chckbxTransfer = new JCheckBox("Allow fall back to other transfer mode on failure");
+		chckbxTransfer.setSelected(true);
+		chckbxTransfer.setBounds(8, 77, 351, 23);
+		ftpPanelTransfer.add(chckbxTransfer);
+
+		JLabel lblTransfer = new JLabel(
+				"<html>If you have problems to retrieve directory listings or to transfer files, try to<br>change the default transfer mode.</html>");
+		lblTransfer.setBounds(8, 108, 612, 33);
+		ftpPanelTransfer.add(lblTransfer);
+		
+		ftpPanel.add(ftpPanelTransfer);
+		
+		// Keep-Alive
+		JPanel ftpPanelKeepAlive = new JPanel();
+		ftpPanelKeepAlive.setBounds(0, 152, 632, 99);
+		ftpPanelKeepAlive.setBorder(BorderFactory.createTitledBorder("FTP Keep-alive"));
+		ftpPanelKeepAlive.setLayout(null);
+
+		JCheckBox chckbxKeepAlive = new JCheckBox("Send FTP keep-alive commands");
+		chckbxKeepAlive.setBounds(8, 20, 241, 23);
+		ftpPanelKeepAlive.add(chckbxKeepAlive);
+
+		JLabel lblKeepAlive = new JLabel(
+				"<html>A proper server does not require this. Contact the server administrator if you<br>need this.</html>");
+		lblKeepAlive.setBounds(8, 57, 612, 30);
+		ftpPanelKeepAlive.add(lblKeepAlive);
+		
+		ftpPanel.add(ftpPanelKeepAlive);
+	}
+
+	private void connectionPanel() {
+		// Panel Overview
+		JPanel connectionPanelOverview = new JPanel();
+		connectionPanelOverview.setBounds(12, 0, 608, 90);
+		connectionPanel.add(connectionPanelOverview);
+		connectionPanelOverview.setLayout(null);
+		connectionPanelOverview.setBorder(BorderFactory.createTitledBorder("Overview"));
+
+		JLabel lblOverview = new JLabel(
+				"<html>For more detailed information about what these options do, please run the <br>\nnetwork configuration wizard.</html>");
+		lblOverview.setBounds(12, 12, 584, 38);
+		connectionPanelOverview.add(lblOverview);
+
+		JButton btnOverview = new JButton("Run configuration wizard now...");
+		btnOverview.setMargin(new Insets(0, 0, 0, 0));
+		btnOverview.setBounds(12, 53, 248, 25);
+		connectionPanelOverview.add(btnOverview);
+
+		// Panel Timeout
+		JPanel connectionPanelTimeout = new JPanel();
+		connectionPanelTimeout.setBounds(12, 90, 608, 90);
+		connectionPanel.add(connectionPanelTimeout);
+		connectionPanelTimeout.setLayout(null);
+		connectionPanelTimeout.setBorder(BorderFactory.createTitledBorder("Timeout"));
+
+		JLabel lblTimeout1 = new JLabel("Timeout in seconds: ");
+		lblTimeout1.setBounds(12, 12, 141, 27);
+		connectionPanelTimeout.add(lblTimeout1);
+
+		textFieldTimeout = new JTextField();
+		textFieldTimeout.setText("20");
+		textFieldTimeout.setBounds(154, 16, 29, 19);
+		connectionPanelTimeout.add(textFieldTimeout);
+		textFieldTimeout.setColumns(10);
+
+		JLabel lblTimeout2 = new JLabel("(10-9999, 0 to disable)");
+		lblTimeout2.setBounds(186, 18, 151, 15);
+		connectionPanelTimeout.add(lblTimeout2);
+
+		JLabel lblTimeout3 = new JLabel(
+				"<html>If no data is sent or recived during an operation for longer than the specified<br>time, the connection will be closed and FileZilla will try to reconnect.</html>");
+		lblTimeout3.setBounds(12, 47, 584, 27);
+		connectionPanelTimeout.add(lblTimeout3);
+
+		// Panel Reconnection
+		JPanel connectionPanelReconnection = new JPanel();
+		connectionPanelReconnection.setBounds(12, 180, 608, 116);
+		connectionPanel.add(connectionPanelReconnection);
+		connectionPanelReconnection.setLayout(null);
+		connectionPanelReconnection.setBorder(BorderFactory.createTitledBorder("Reconnection settings"));
+
+		JLabel lblReconnection1 = new JLabel("Maximum number of retries:");
+		lblReconnection1.setBounds(12, 22, 257, 15);
+		connectionPanelReconnection.add(lblReconnection1);
+
+		JLabel lblReconnection3 = new JLabel("Delay between failed login attempts: ");
+		lblReconnection3.setBounds(12, 49, 257, 15);
+		connectionPanelReconnection.add(lblReconnection3);
+
+		textFieldReconnection1 = new JTextField();
+		textFieldReconnection1.setText("2");
+		textFieldReconnection1.setBounds(274, 20, 38, 19);
+		connectionPanelReconnection.add(textFieldReconnection1);
+		textFieldReconnection1.setColumns(10);
+
+		textField = new JTextField();
+		textField.setText("5");
+		textField.setColumns(10);
+		textField.setBounds(274, 47, 38, 19);
+		connectionPanelReconnection.add(textField);
+
+		JLabel labelReconnection2 = new JLabel("(0-99)");
+		labelReconnection2.setBounds(318, 22, 47, 15);
+		connectionPanelReconnection.add(labelReconnection2);
+
+		JLabel lblReconnection4 = new JLabel("(0-99 seconds)");
+		lblReconnection4.setBounds(318, 49, 98, 15);
+		connectionPanelReconnection.add(lblReconnection4);
+
+		JLabel lblPleaseNoteThat = new JLabel(
+				"<html>Please note that some servers might ban you if you try to reconnect too often or in<br> too short intervals.</html>");
+		lblPleaseNoteThat.setBounds(12, 76, 584, 32);
+		connectionPanelReconnection.add(lblPleaseNoteThat);
+	}
+
+	private void activePanel() {
+		// Limit Local Ports
+		JPanel activemodePanelLimitPorts = new JPanel();
+		activemodePanelLimitPorts.setBounds(0, 0, 632, 161);
+		activemodePanel.add(activemodePanelLimitPorts);
+		activemodePanelLimitPorts.setBorder(BorderFactory.createTitledBorder("Limit local ports"));
+		activemodePanelLimitPorts.setLayout(null);
+
+		Checkbox checkboxLimitPorts = new Checkbox("Limit local ports used by FileZilla");
+		checkboxLimitPorts.setBounds(10, 20, 235, 23);
+		activemodePanelLimitPorts.add(checkboxLimitPorts);
+
+		JLabel lblLimitPorts = new JLabel(
+				"<html>By default uses any available local port to establish transfers in active mode. If<br>you want to limit FileZilla to use only a small range of ports, please enter the<br>port range below.</html>");
+		lblLimitPorts.setBounds(10, 49, 610, 45);
+		activemodePanelLimitPorts.add(lblLimitPorts);
+
+		JLabel lblLowest = new JLabel("Lowest available port: ");
+		lblLowest.setBounds(10, 106, 155, 15);
+		activemodePanelLimitPorts.add(lblLowest);
+
+		JLabel lblHighest = new JLabel("Highest available port: ");
+		lblHighest.setBounds(10, 133, 167, 15);
+		activemodePanelLimitPorts.add(lblHighest);
+
+		textFieldActivemodePanel1 = new JTextField();
+		textFieldActivemodePanel1.setText("6000");
+		textFieldActivemodePanel1.setBounds(175, 106, 42, 19);
+		activemodePanelLimitPorts.add(textFieldActivemodePanel1);
+		textFieldActivemodePanel1.setColumns(10);
+		textFieldActivemodePanel1.setEnabled(false);
+
+		textFieldActivemodePanel2 = new JTextField();
+		textFieldActivemodePanel2.setText("7000");
+		textFieldActivemodePanel2.setColumns(10);
+		textFieldActivemodePanel2.setBounds(175, 131, 42, 19);
+		activemodePanelLimitPorts.add(textFieldActivemodePanel2);
+		textFieldActivemodePanel2.setEnabled(false);
+
+		checkboxLimitPorts.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.DESELECTED) {
+					textFieldActivemodePanel1.setEnabled(false);
+					textFieldActivemodePanel2.setEnabled(false);
+				} else if (e.getStateChange() == ItemEvent.SELECTED) {
+					textFieldActivemodePanel1.setEnabled(true);
+					textFieldActivemodePanel2.setEnabled(true);
+				}
+
+			}
+		});
+
+		// Active mode IP
+		JPanel ActivemodePanelIp = new JPanel();
+		ActivemodePanelIp.setBounds(0, 159, 632, 273);
+		activemodePanel.add(ActivemodePanelIp);
+		ActivemodePanelIp.setBorder(BorderFactory.createTitledBorder("Active mode IP"));
+		ActivemodePanelIp.setLayout(null);
+
+		JLabel lblInActiveIP = new JLabel(
+				"In order to use active mode, FIleZilla needs to know your external IP adress.");
+		lblInActiveIP.setBounds(12, 22, 527, 15);
+		ActivemodePanelIp.add(lblInActiveIP);
+
+		rdbtnActiveIP1 = new JRadioButton("Ask your operating system for the external IP adress.");
+		rdbtnActiveIP1.setSelected(true);
+		buttonGroup_1.add(rdbtnActiveIP1);
+		rdbtnActiveIP1.setBounds(8, 45, 390, 23);
+		ActivemodePanelIp.add(rdbtnActiveIP1);
+		rdbtnActiveIP1.addItemListener(this);
+
+		rdbtnActiveIP2 = new JRadioButton("Use the following IP adress:");
+		buttonGroup_1.add(rdbtnActiveIP2);
+		rdbtnActiveIP2.setBounds(8, 70, 214, 23);
+		ActivemodePanelIp.add(rdbtnActiveIP2);
+		rdbtnActiveIP2.addItemListener(this);
+
+		textFieldActiveIP1 = new JTextField();
+		textFieldActiveIP1.setBounds(12, 97, 166, 24);
+		ActivemodePanelIp.add(textFieldActiveIP1);
+		textFieldActiveIP1.setColumns(10);
+		textFieldActiveIP1.setEnabled(false);
+
+		JLabel lblActiveIP2 = new JLabel("Use this if you're behind a router and have a static external IP address.");
+		lblActiveIP2.setBounds(12, 125, 493, 15);
+		ActivemodePanelIp.add(lblActiveIP2);
+
+		rdbtnActiveIP3 = new JRadioButton("Get external IP address from the following URL:");
+		buttonGroup_1.add(rdbtnActiveIP3);
+		rdbtnActiveIP3.setBounds(8, 148, 350, 23);
+		ActivemodePanelIp.add(rdbtnActiveIP3);
+		rdbtnActiveIP3.addItemListener(this);
+
+		txtHttpipfilezillaprojectorgipphp = new JTextField();
+		txtHttpipfilezillaprojectorgipphp.setText("http://ip.filezilla-project.org/ip.php");
+		txtHttpipfilezillaprojectorgipphp.setColumns(10);
+		txtHttpipfilezillaprojectorgipphp.setBounds(12, 168, 318, 24);
+		ActivemodePanelIp.add(txtHttpipfilezillaprojectorgipphp);
+		txtHttpipfilezillaprojectorgipphp.setEnabled(false);
+
+		JLabel lblActiveIP3 = new JLabel("Default: http://ip.filezilla-project.org/ip.php");
+		lblActiveIP3.setBounds(12, 204, 318, 15);
+		ActivemodePanelIp.add(lblActiveIP3);
+
+		checkboxActiveIP = new Checkbox("Don't use external IP address on local connections.");
+		checkboxActiveIP.setState(true);
+		checkboxActiveIP.setBounds(10, 225, 348, 23);
+		ActivemodePanelIp.add(checkboxActiveIP);
+		checkboxActiveIP.setEnabled(false);
+
+	}
+
+	private void passivePanel() {
+		// Passive mode
+		JPanel passivemodePanel2 = new JPanel();
+		passivemodePanel2.setBounds(0, 0, 633, 104);
+		passivemodePanel.add(passivemodePanel2);
+		passivemodePanel2.setBorder(BorderFactory.createTitledBorder("Passive mode"));
+		passivemodePanel2.setLayout(null);
+
+		JLabel lblPassivemode = new JLabel(
+				"<html>Some misconfigured remote servers which are behind a router, may reply with<br>teir local IP address.</html>");
+		lblPassivemode.setBounds(12, 12, 609, 36);
+		passivemodePanel2.add(lblPassivemode);
+
+		JRadioButton rdbtnUseTheServers = new JRadioButton("Use the server's external IP address instead");
+		rdbtnUseTheServers.setSelected(true);
+		buttonGroup_2.add(rdbtnUseTheServers);
+		rdbtnUseTheServers.setBounds(12, 47, 326, 23);
+		passivemodePanel2.add(rdbtnUseTheServers);
+
+		JRadioButton rdbtnFallBackTo = new JRadioButton("Fall back to active mode");
+		buttonGroup_2.add(rdbtnFallBackTo);
+		rdbtnFallBackTo.setBounds(12, 74, 190, 23);
+		passivemodePanel2.add(rdbtnFallBackTo);
+
+	}
+	
+	private void sftpPanel() {
+		JPanel sftpPanelKeyAuthentication = new JPanel();
+		sftpPanelKeyAuthentication.setBounds(0, 0, 649, 340);
+		sftpPanel.add(sftpPanelKeyAuthentication);
+		sftpPanelKeyAuthentication.setBorder(BorderFactory.createTitledBorder("Public Key Authentication"));
+		sftpPanelKeyAuthentication.setLayout(null);
+		
+		JLabel lblToSupportPublic = new JLabel("To support public key authentication, FileZilla needs to know the private keys to use.");
+		lblToSupportPublic.setBounds(12, 22, 584, 15);
+		sftpPanelKeyAuthentication.add(lblToSupportPublic);
+		
+		JLabel lblPrivateKeys = new JLabel("Private keys:");
+		lblPrivateKeys.setBounds(12, 49, 89, 15);
+		sftpPanelKeyAuthentication.add(lblPrivateKeys);
+		
+//		table = new JTable();
+//		table.setAutoscrolls(false);
+//		table.setModel(new DefaultTableModel(
+//			new Object[][] {
+//			},
+//			new String[] {
+//				"New column", "Data", "Comment", "Filename"
+//			}
+//		) {
+//			Class[] columnTypes = new Class[] {
+//				Object.class, String.class, String.class, String.class
+//			};
+//			public Class getColumnClass(int columnIndex) {
+//				return columnTypes[columnIndex];
+//			}
+//			boolean[] columnEditables = new boolean[] {
+//				false, true, true, true
+//			};
+//			public boolean isCellEditable(int row, int column) {
+//				return columnEditables[column];
+//			}
+//		});
+//		
+//		DefaultTableModel model = (DefaultTableModel) table.getModel();
+//		model.addRow(new Object[] {"holcfggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggdfgdfga", "que", "tal", "sada"});
+//		//table.setEnabled(false);
+//		
+//		table.setBounds(12, 76, 584, 264);
+//		sftpPanelKeyAuthentication.add(table);
+		
+		
+	}
+	
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		Object source = e.getItemSelectable();
+
+		// Active mode
+		if (source == rdbtnActiveIP1) {
+			textFieldActiveIP1.setEnabled(false);
+			txtHttpipfilezillaprojectorgipphp.setEnabled(false);
+			checkboxActiveIP.setEnabled(false);
+		} else if (source == rdbtnActiveIP2) {
+			textFieldActiveIP1.setEnabled(true);
+			txtHttpipfilezillaprojectorgipphp.setEnabled(false);
+			checkboxActiveIP.setEnabled(true);
+		} else if (source == rdbtnActiveIP3) {
+			textFieldActiveIP1.setEnabled(false);
+			txtHttpipfilezillaprojectorgipphp.setEnabled(true);
+			checkboxActiveIP.setEnabled(true);
+		}
+
+	}
+
 	public void seleccionarScreen(MouseEvent e) {
 		DefaultMutableTreeNode click = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
 		switch (click.getUserObject().toString()) {
@@ -609,11 +1010,16 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 			cardLayoutSettings.show(panel, "connection");
 			break;
 		case "FTP":
-			cardLayoutSettings.show(panel, "ftp");
+			cardLayoutSettings.show(panel, "ftp-panel");
 			break;
 		case "Active mode":
 			cardLayoutSettings.show(panel, "active-mode");
-
+			break;
+		case "Passive mode":
+			cardLayoutSettings.show(panel, "passive-mode");
+			break;
+		case "SFTP":
+			cardLayoutSettings.show(panel, "sftp");
 			break;
 		case "Debug":
 			cardLayoutSettings.show(panel, "debug");
@@ -649,4 +1055,14 @@ public class ProjectM07FTPSettingsPanel extends JPanel {
 			break;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

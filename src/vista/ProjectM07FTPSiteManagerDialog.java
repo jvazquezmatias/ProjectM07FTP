@@ -14,10 +14,12 @@ import javax.swing.JTabbedPane;
 import java.awt.Panel;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
@@ -33,7 +35,7 @@ import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ProjectM07FTPSiteManagerDialog extends JDialog {
+public class ProjectM07FTPSiteManagerDialog extends JDialog implements ActionListener{
 
 	private JPanel contentPane;
 	JTabbedPane tabbedPane;
@@ -47,6 +49,7 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 	private JTextField textFieldEncoding;
 	private final ButtonGroup buttonGroupTabCharset = new ButtonGroup();
 	private JTextField textFieldGeneralAccount;
+	private final JFileChooser fc = new JFileChooser();
 
 	private ProjectM07FTPDadesConnexio dadesConnexio;
 	private JButton btnSaveAndConnect;
@@ -235,6 +238,7 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		JButton buttonAdvancedLocalDirectory = new JButton("Browse...");
 		buttonAdvancedLocalDirectory.setMargin(new Insets(2, 0, 2, 0));
 		buttonAdvancedLocalDirectory.setBounds(599, 111, 98, 25);
+		buttonAdvancedLocalDirectory.addActionListener(this);
 		advancedPanel.add(buttonAdvancedLocalDirectory);
 
 		JSeparator separator = new JSeparator();
@@ -383,7 +387,34 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		charsetPanel.add(textFieldEncoding);
 		textFieldEncoding.setColumns(10);
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
+		case "Autodetect":
+			textFieldEncoding.setEnabled(false);
+			break;
+		case "Force UTF-8":
+			textFieldEncoding.setEnabled(false);
+			break;
+		case "Use custom charset":
+			textFieldEncoding.setEnabled(true);
+			break;
 
+		case "Browse...":
+			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			int returnVal = fc.showOpenDialog(null);
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				// Agafa la ruta
+				textFieldAdvancedLocalDirectory.setText(file.getPath());
+
+			}
+			break;
+		}
+
+	}
+	
 
 	public JButton getBtnSaveAndConnect() {
 		return btnSaveAndConnect;
