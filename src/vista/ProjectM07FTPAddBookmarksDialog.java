@@ -9,11 +9,13 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.ButtonGroup;
 
 public class ProjectM07FTPAddBookmarksDialog extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Create the panel.
@@ -24,10 +26,13 @@ public class ProjectM07FTPAddBookmarksDialog extends JPanel {
 		setPreferredSize(new Dimension(412, 288));
 		
 		JRadioButton rdbtnGlobalAddress = new JRadioButton("Global address");
+		rdbtnGlobalAddress.setSelected(true);
+		buttonGroup.add(rdbtnGlobalAddress);
 		rdbtnGlobalAddress.setBounds(12, 40, 144, 23);
 		add(rdbtnGlobalAddress);
 		
 		JRadioButton rdbtnSpecificAddressOf = new JRadioButton("Specific address of the site");
+		buttonGroup.add(rdbtnSpecificAddressOf);
 		rdbtnSpecificAddressOf.setBounds(154, 40, 228, 23);
 		add(rdbtnSpecificAddressOf);
 		
@@ -70,7 +75,7 @@ public class ProjectM07FTPAddBookmarksDialog extends JPanel {
 		add(lblRemoteDirectory);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(132, 186, 271, 19);
+		textField_2.setBounds(143, 186, 260, 19);
 		add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -82,5 +87,8 @@ public class ProjectM07FTPAddBookmarksDialog extends JPanel {
 		chckbxDirectoryComparation.setBounds(12, 255, 200, 23);
 		add(chckbxDirectoryComparation);
 
+	}
+	public JTextField getNameBookmark() {
+		return textField;
 	}
 }

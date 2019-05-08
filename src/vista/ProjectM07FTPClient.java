@@ -63,6 +63,8 @@ public class ProjectM07FTPClient extends JFrame {
 	private JMenuItem menuItemReportBug;
 	private JMenuItem menuItemAddBookmark;
 	private JMenuItem menuItemSettings;
+	private JMenu menuBookmarks;
+	private JMenuItem menuItemManageBookmarks;
 
 	public ProjectM07FTPClient() {
 		dadesConnexio = new ProjectM07FTPDadesConnexio();
@@ -363,7 +365,7 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 
 	private void menuBookmarks() {
-		JMenu menuBookmarks = new JMenu("Bookmarks");
+		menuBookmarks = new JMenu("Bookmarks");
 		menuBookmarks.setMnemonic('B');
 		menuBar.add(menuBookmarks);
 
@@ -373,12 +375,17 @@ public class ProjectM07FTPClient extends JFrame {
 		menuItemAddBookmark.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK));
 		menuBookmarks.add(menuItemAddBookmark);
 
-		JMenuItem menuItemManageBookmarks = new JMenuItem("Manage bookmarks...");
+		menuItemManageBookmarks = new JMenuItem("Manage bookmarks...");
 		menuItemManageBookmarks.setMnemonic('M');
 		menuItemManageBookmarks
 				.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
 		menuBookmarks.setMnemonic(KeyEvent.VK_F1);
 		menuBookmarks.add(menuItemManageBookmarks);
+		
+		JSeparator separator = new JSeparator();
+		menuBookmarks.add(separator);
+		
+		
 
 	}
 
@@ -499,6 +506,14 @@ public class ProjectM07FTPClient extends JFrame {
 
 	}
 
+	public JMenu getMenuBookmarks() {
+		return menuBookmarks;
+	}
+
+	public void setMenuBookmarks(JMenu menuBookmarks) {
+		this.menuBookmarks = menuBookmarks;
+	}
+
 	public String getHostFastConn() {
 		return textFieldHost.getText();
 	}
@@ -540,6 +555,7 @@ public class ProjectM07FTPClient extends JFrame {
 	public JButton getBtnToolBarSiteManager() {
 		return btnToolBarSiteManager;
 	}
+
 	public JMenuItem getMntmOpenWelcomeDialog() {
 		return mntmOpenWelcomeDialog;
 	}
@@ -558,5 +574,8 @@ public class ProjectM07FTPClient extends JFrame {
 	}
 	public JMenuItem getMenuItemSettings() {
 		return menuItemSettings;
+	}
+	public JMenuItem getMenuItemManageBookmarks() {
+		return menuItemManageBookmarks;
 	}
 }
