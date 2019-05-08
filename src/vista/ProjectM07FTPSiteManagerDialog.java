@@ -51,6 +51,7 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 	private ProjectM07FTPDadesConnexio dadesConnexio;
 	private JButton btnSaveAndConnect;
 	private JTextField textFieldGeneralPort;
+	private JTextField textField;
 
 	public ProjectM07FTPSiteManagerDialog() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -59,6 +60,11 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(412, 455, 124, 19);
+		contentPane.add(textField);
+		textField.setColumns(10);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(12, 0, 717, 443);
@@ -67,6 +73,10 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 		btnSaveAndConnect = new JButton("Save and Connect");
 		btnSaveAndConnect.setBounds(548, 450, 157, 25);
 		contentPane.add(btnSaveAndConnect);
+		
+		JLabel lblConnectionName = new JLabel("Connection name:");
+		lblConnectionName.setBounds(264, 455, 131, 15);
+		contentPane.add(lblConnectionName);
 
 		addTabGeneral();
 		addTabAdvanced();
@@ -398,5 +408,11 @@ public class ProjectM07FTPSiteManagerDialog extends JDialog {
 	}
 	public JPasswordField getPasswordFieldGeneralPassword() {
 		return passwordFieldGeneralPassword;
+	}
+	public String getConnectionNameSiteManager() {
+		return textField.getText();
+	}
+	public void setConnectionNameSiteManager(String text_3) {
+		textField.setText(text_3);
 	}
 }

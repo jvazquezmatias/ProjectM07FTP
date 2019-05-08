@@ -2,6 +2,7 @@ package model;
 
 public class ProjectM07FTPDadesConnexio {
 
+	public String connectionName;
 	public String host;
 	public Integer port;
 	public String user;
@@ -11,11 +12,20 @@ public class ProjectM07FTPDadesConnexio {
 
 	}
 
-	public ProjectM07FTPDadesConnexio(String host, Integer port, String user, String password) {
+	public ProjectM07FTPDadesConnexio(String connectionName, String host, Integer port, String user, String password) {
+		this.connectionName = connectionName;
 		this.host = host;
 		this.port = port;
 		this.user = user;
 		this.password = password;
+	}
+
+	public String getConnectionName() {
+		return connectionName;
+	}
+
+	public void setConnectionName(String connectionName) {
+		this.connectionName = connectionName;
 	}
 
 	public String getHost() {

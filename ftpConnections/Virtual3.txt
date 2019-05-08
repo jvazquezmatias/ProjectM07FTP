@@ -1,0 +1,6 @@
+#Thu Apr 11 20:24:16 CEST 2019
+ConnectionName=Virtual3
+User=ftpm07
+Port=2222
+Host=192.168.204.114
+Password=ftpm07
